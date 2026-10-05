@@ -69,7 +69,8 @@ export default async function EntryPage({ params }: Props) {
 
   const isContact = page?.id === 'lien-he';
   const showBody = !isContact && entry.data.html.trim() !== '';
-  const intro = page && page.kind !== 'info' ? page.description : '';
+  // đoạn giới thiệu dưới tiêu đề chỉ dùng cho trang không có nội dung riêng (tránh lặp câu mở đầu)
+  const intro = page && page.kind !== 'info' && !showBody ? page.description : '';
 
   const crumbs = [{ name: 'Trang chủ', path: '/' }];
   if (post) crumbs.push({ name: 'Tin tức & Sự kiện', path: '/tin-tuc-su-kien/' });

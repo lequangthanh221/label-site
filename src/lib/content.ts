@@ -42,6 +42,14 @@ const tokens: Record<string, string> = {
 };
 const fill = (s: string) => s.replace(/\{\{(\w+)\}\}/g, (m, k) => tokens[k] ?? m);
 
+const norm = (s: string) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+
+/** Bỏ tiêu đề đầu bài nếu trùng tên trang (trang đã có h1). */
+function dropDuplicateHeading(html: string, title: string) {
+  const m = html.match(/^\s*<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/);
+  return m && norm(m[1]) === norm(title) ? html.slice(m[0].length).trimStart() : html;
+}
+
 function parse(file: string) {
   const raw = fs.readFileSync(file, 'utf8');
   const [, front, ...rest] = raw.split(/^---$/m);
@@ -50,7 +58,8 @@ function parse(file: string) {
     const i = line.indexOf(':');
     if (i > 0) data[line.slice(0, i).trim()] = JSON.parse(line.slice(i + 1).trim());
   }
-  return { id: path.basename(file, '.md'), ...data, html: fill(rest.join('---').trim()) };
+  const html = dropDuplicateHeading(fill(rest.join('---').trim()), String(data.title ?? ''));
+  return { id: path.basename(file, '.md'), ...data, html };
 }
 
 function load<T>(dir: string): T[] {
