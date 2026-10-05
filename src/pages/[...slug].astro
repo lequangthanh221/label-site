@@ -47,6 +47,10 @@ if (page?.id === 'san-pham-4b-label') {
   listingTitle = page.data.kind === 'solution' ? 'Quy cách sẵn có' : '';
 }
 const isContact = page?.id === 'lien-he';
+const postDate = isPost
+  ? new Date((entry as CollectionEntry<'posts'>).data.date).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' })
+  : '';
+const intro = !isPost && page?.data.kind !== 'info' ? entry.data.description : '';
 
 const crumbs = [{ name: 'Trang chủ', path: '/' }];
 if (isPost) crumbs.push({ name: 'Tin tức & Sự kiện', path: '/tin-tuc-su-kien/' });
@@ -88,8 +92,8 @@ if (isPost) {
         {crumbs.slice(0, -1).map((c) => <><a href={c.path}>{c.name}</a><span aria-hidden="true">/</span></>)}
       </nav>
       <h1 class="page-title" data-reveal="words">{entry.data.title}</h1>
-      {isPost && <p class="page-meta" data-reveal data-delay="300">{new Date((entry as CollectionEntry<'posts'>).data.date).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>}
-      {!isPost && entry.data.description && page?.data.kind !== 'info' && <p class="page-meta lead" data-reveal data-delay="300">{entry.data.description}</p>}
+      {postDate && <p class="page-meta" data-reveal data-delay="300">{postDate}</p>}
+      {intro && <p class="page-meta lead" data-reveal data-delay="300">{intro}</p>}
     </div>
   </div>
 
