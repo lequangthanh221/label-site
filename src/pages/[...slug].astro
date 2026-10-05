@@ -1,0 +1,131 @@
+---
+// Một route cho toàn bộ trang + bài viết, giữ nguyên URL của site gốc.
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import { site } from '../config/site';
+
+type Entry = CollectionEntry<'pages'> | CollectionEntry<'posts'>;
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  const posts = await getCollection('posts');
+  return [...pages, ...posts].map((entry) => ({
+    params: { slug: entry.data.path.replace(/^\/|\/$/g, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: Entry };
+const { Content } = await render(entry);
+const pages = await getCollection('pages');
+const posts = (await getCollection('posts')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+const byOrder = (a: CollectionEntry<'pages'>, b: CollectionEntry<'pages'>) =>
+  a.data.order - b.data.order || a.data.title.localeCompare(b.data.title, 'vi');
+
+const isPost = entry.collection === 'posts';
+const page = isPost ? null : (entry as CollectionEntry<'pages'>);
+const parent = page?.data.parent ? pages.find((p) => p.id === page.data.parent) : undefined;
+
+// danh sách con hiển thị dưới nội dung
+let listing: { href: string; title: string; image?: string; text?: string }[] = [];
+let listingTitle = '';
+const toCard = (p: CollectionEntry<'pages'> | CollectionEntry<'posts'>) => ({
+  href: p.data.path, title: p.data.title, image: p.data.cover || undefined, text: p.data.description,
+});
+if (page?.id === 'san-pham-4b-label') {
+  listing = pages.filter((p) => p.data.kind === 'solution' && !p.data.parent).sort(byOrder).map(toCard);
+} else if (page?.id === 'dich-vu') {
+  listing = pages.filter((p) => p.data.kind === 'service' && p.id !== 'dich-vu').sort(byOrder).map(toCard);
+  listingTitle = 'Các dịch vụ';
+} else if (page?.id === 'tin-tuc-su-kien') {
+  listing = posts.map(toCard);
+} else if (page) {
+  listing = pages.filter((p) => p.data.parent === page.id).sort(byOrder).map(toCard);
+  listingTitle = page.data.kind === 'solution' ? 'Quy cách sẵn có' : '';
+}
+const isContact = page?.id === 'lien-he';
+
+const crumbs = [{ name: 'Trang chủ', path: '/' }];
+if (isPost) crumbs.push({ name: 'Tin tức & Sự kiện', path: '/tin-tuc-su-kien/' });
+if (parent) crumbs.push({ name: parent.data.title, path: parent.data.path });
+crumbs.push({ name: entry.data.title, path: entry.data.path });
+
+const jsonLd: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.path, Astro.site).toString(),
+    })),
+  },
+];
+if (isPost) {
+  const d = (entry as CollectionEntry<'posts'>).data;
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: d.title,
+    datePublished: d.date,
+    dateModified: d.updated,
+    image: d.cover ? new URL(d.cover, Astro.site).toString() : undefined,
+    publisher: { '@type': 'Organization', name: site.name },
+  });
+}
+---
+<Base
+  title={entry.data.title}
+  description={entry.data.description}
+  image={entry.data.cover || undefined}
+  type={isPost ? 'article' : 'website'}
+  jsonLd={jsonLd}
+>
+  <div class="page-head section--alt">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        {crumbs.slice(0, -1).map((c) => <><a href={c.path}>{c.name}</a><span aria-hidden="true">/</span></>)}
+      </nav>
+      <h1>{entry.data.title}</h1>
+      {isPost && <p class="muted">{new Date((entry as CollectionEntry<'posts'>).data.date).toLocaleDateString('vi-VN')}</p>}
+    </div>
+  </div>
+
+  <div class="container section">
+    {isContact ? (
+      <ContactBlock />
+    ) : (
+      <article class="prose"><Content /></article>
+    )}
+
+    {listing.length > 0 && (
+      <section class="listing">
+        {listingTitle && <h2>{listingTitle}</h2>}
+        <div class="grid">{listing.map((c) => <Card {...c} />)}</div>
+      </section>
+    )}
+  </div>
+
+  {!isContact && (
+    <section class="cta section--alt">
+      <div class="container cta__inner">
+        <div>
+          <h2>Cần tư vấn tem nhãn cho sản phẩm của bạn?</h2>
+          <p class="muted">Gọi {site.contact.phone} hoặc gửi yêu cầu, chúng tôi phản hồi trong ngày.</p>
+        </div>
+        <a class="btn" href="/lien-he/">Liên hệ ngay</a>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .page-head { padding-block: 40px 32px; }
+  .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.875rem; margin-bottom: 8px; color: var(--color-ink-muted); }
+  .crumbs a { color: inherit; }
+  .listing { margin-top: 48px; }
+  .cta { padding-block: 48px; }
+  .cta__inner { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
+  .cta h2 { margin: 0 0 4px; }
+  .cta p { margin: 0; }
+</style>

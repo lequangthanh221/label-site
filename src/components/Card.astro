@@ -1,0 +1,20 @@
+---
+interface Props { href: string; title: string; image?: string; text?: string }
+const { href, title, image, text } = Astro.props;
+---
+<a class="card" href={href}>
+  {image ? <img src={image} alt="" loading="lazy" /> : <div class="card__ph" aria-hidden="true"></div>}
+  <div class="card__body">
+    <h3>{title}</h3>
+    {text && <p>{text}</p>}
+  </div>
+</a>
+
+<style>
+  .card { display: flex; flex-direction: column; border: 1px solid var(--color-line); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; background: var(--color-surface); transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 8px 24px rgb(0 0 0 / 0.08); }
+  .card img, .card__ph { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; background: var(--color-surface-alt); }
+  .card__body { padding: 16px 20px 20px; }
+  .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--color-ink-muted); font-size: 0.925rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+</style>

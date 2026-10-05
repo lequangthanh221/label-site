@@ -1,0 +1,65 @@
+---
+// Site gốc không có nội dung trang chủ riêng — trang này dựng từ dữ liệu sản phẩm/dịch vụ/bài viết.
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import { site } from '../config/site';
+
+const pages = await getCollection('pages');
+const posts = (await getCollection('posts')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+const solutions = pages.filter((p) => p.data.kind === 'solution' && !p.data.parent)
+  .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title, 'vi'));
+const services = pages.filter((p) => p.data.kind === 'service' && p.id !== 'dich-vu');
+const hero = pages.find((p) => p.id === 'in-tem-nhan-ma-vach')?.data.cover;
+---
+<Base title={site.name} description={site.description}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <h1>{site.tagline}</h1>
+        <p class="lead">{site.description}</p>
+        <div class="hero__cta">
+          <a class="btn" href="/lien-he/">Nhận báo giá</a>
+          <a class="btn btn--ghost" href="/san-pham-4b-label/">Xem sản phẩm</a>
+        </div>
+      </div>
+      {hero && <img src={hero} alt="" class="hero__img" />}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Tem nhãn theo ngành</h2>
+      <div class="grid">
+        {solutions.map((p) => <Card href={p.data.path} title={p.data.title} image={p.data.cover} text={p.data.description} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Dịch vụ</h2>
+      <div class="grid">
+        {services.map((p) => <Card href={p.data.path} title={p.data.title} image={p.data.cover} text={p.data.description} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Tin tức &amp; kiến thức</h2>
+      <div class="grid">
+        {posts.map((p) => <Card href={p.data.path} title={p.data.title} image={p.data.cover} text={p.data.description} />)}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { background: var(--color-surface-alt); padding-block: var(--section); }
+  .hero__inner { display: grid; gap: 40px; align-items: center; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .lead { font-size: 1.125rem; color: var(--color-ink-muted); max-width: 52ch; }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .hero__img { border-radius: var(--radius); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+  h2 { margin-top: 0; }
+</style>

@@ -1,0 +1,36 @@
+---
+import { site, nav } from '../config/site';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <img src={site.logo} alt={site.name} width="160" height="40" class="footer__logo" />
+      <p><strong>{site.legalName}</strong> {site.description}</p>
+    </div>
+    <div>
+      <h2>Danh mục</h2>
+      <ul>{nav.map((i) => <li><a href={i.href}>{i.label}</a></li>)}</ul>
+    </div>
+    <div>
+      <h2>Liên hệ</h2>
+      <ul>
+        <li>{site.contact.address}</li>
+        <li><a href={site.contact.phoneHref}>{site.contact.phone}</a></li>
+        <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__copy">© {year} {site.legalName}</div>
+</footer>
+
+<style>
+  .footer { background: var(--color-ink); color: rgb(255 255 255 / 0.8); margin-top: var(--section); }
+  .footer a { color: inherit; text-decoration: none; }
+  .footer a:hover { color: #fff; }
+  .footer h2 { color: #fff; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
+  .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .footer__grid { display: grid; gap: 32px; padding-block: 56px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .footer__logo { height: 40px; width: auto; margin-bottom: 16px; filter: brightness(0) invert(1); }
+  .footer__copy { border-top: 1px solid rgb(255 255 255 / 0.12); padding-block: 16px; font-size: 0.875rem; }
+</style>

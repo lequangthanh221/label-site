@@ -1,0 +1,27 @@
+/* ============================================================
+   BRAND TOKENS — thay bộ này theo brand guidelines của công ty mới.
+   Component chỉ dùng biến, không viết mã màu trực tiếp.
+   ============================================================ */
+:root {
+  /* màu */
+  --color-brand: #1f4e79;
+  --color-brand-contrast: #ffffff;
+  --color-accent: #e0a526;
+  --color-ink: #1b1f24;
+  --color-ink-muted: #5b6470;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f4f5f7;
+  --color-line: #e2e5e9;
+
+  /* chữ */
+  --font-body: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-body);
+  --text-base: 1rem;
+  --leading: 1.65;
+
+  /* nhịp và bo góc */
+  --radius: 6px;
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section: clamp(48px, 8vw, 96px);
+}
