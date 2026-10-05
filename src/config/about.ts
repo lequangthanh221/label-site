@@ -45,7 +45,7 @@ export const aboutPage = {
   values: {
     tag: 'Giá trị',
     title: 'Điều chúng tôi [[mang lại]]',
-    image: { src: '/uploads/2020/10/Picture11.webp', alt: 'Sản phẩm mỹ phẩm với tem nhãn hoàn thiện' },
+    image: { src: '/uploads/2020/10/Picture4-1-e1603288615267.webp', alt: 'Sản phẩm mỹ phẩm với tem nhãn hoàn thiện' },
     items: [
       { title: 'Trân quý từng con nhãn', text: 'Chúng tôi dành những điều tốt đẹp nhất cho sản phẩm của bạn — từng con nhãn, chiếc tem, cái hộp, cái túi.' },
       { title: 'Hiểu vai trò của tem nhãn', text: 'Tem nhãn bao bì quyết định cách thương hiệu của bạn được định vị trên thị trường.' },
