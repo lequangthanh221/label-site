@@ -1,65 +1,474 @@
 ---
-// Site gốc không có nội dung trang chủ riêng — trang này dựng từ dữ liệu sản phẩm/dịch vụ/bài viết.
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
 import { site } from '../config/site';
+import { hero, materials, industries, about, stats, values, process, commitments, faqs, cta } from '../config/home';
 
 const pages = await getCollection('pages');
 const posts = (await getCollection('posts')).sort((a, b) => b.data.date.localeCompare(a.data.date));
-const solutions = pages.filter((p) => p.data.kind === 'solution' && !p.data.parent)
+const solutions = pages
+  .filter((p) => p.data.kind === 'solution' && !p.data.parent && p.data.cover)
   .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title, 'vi'));
-const services = pages.filter((p) => p.data.kind === 'service' && p.id !== 'dich-vu');
-const hero = pages.find((p) => p.id === 'in-tem-nhan-ma-vach')?.data.cover;
+const count = (parent: string) => pages.filter((p) => p.data.parent === parent).length;
+
+const icons: Record<string, string> = {
+  pen: '<path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/>',
+  layers: '<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/>',
+  print: '<path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="1"/><path d="M7 14h10v7H7z"/>',
+  roll: '<circle cx="9" cy="12" r="6"/><circle cx="9" cy="12" r="2"/><path d="M9 6h10v12H9"/>',
+  check: '<path d="m5 12 4.5 4.5L19 7"/>',
+};
+const icon = (name: string) =>
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
+const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <Base title={site.name} description={site.description}>
+  <!-- ============ HERO ============ -->
   <section class="hero">
+    <canvas class="hero__waves" data-waves aria-hidden="true"></canvas>
     <div class="container hero__inner">
-      <div>
-        <h1>{site.tagline}</h1>
-        <p class="lead">{site.description}</p>
-        <div class="hero__cta">
-          <a class="btn" href="/lien-he/">Nhận báo giá</a>
-          <a class="btn btn--ghost" href="/san-pham-4b-label/">Xem sản phẩm</a>
+      <h1 class="h-display hero__title" data-reveal="words">
+        {hero.title[0]}<br />{hero.title[1]} <span class="accent-text">{hero.accent}</span>
+      </h1>
+      <div class="hero__bottom">
+        <div class="hero__left">
+          <p class="lead" data-reveal data-delay="500">{hero.lead}</p>
+          <div class="hero__rule" data-reveal data-delay="650"></div>
+          <div data-reveal data-delay="750"><Button href="/lien-he/">Nhận tư vấn & báo giá</Button></div>
+        </div>
+        <figure class="hero__media" data-reveal data-delay="900">
+          <img src={hero.image} alt={hero.imageCaption} width="1200" height="1600" />
+          <figcaption><span class="hero__dot"></span>{hero.imageCaption}</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="ticker" aria-label="Vật liệu">
+      <div class="marquee"><div class="marquee__track">
+        {[0, 1].map((n) => <ul aria-hidden={n === 1 ? 'true' : undefined}>{materials.map((m) => <li>{m}</li>)}</ul>)}
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ============ DẢI NGÀNH HÀNG ============ -->
+  <section class="bigmarq" aria-label="Ngành hàng">
+    <div class="marquee marquee--slow"><div class="marquee__track">
+      {[0, 1].map((n) => <ul aria-hidden={n === 1 ? 'true' : undefined}>{industries.map((m) => <li>{m}</li>)}</ul>)}
+    </div></div>
+  </section>
+
+  <!-- ============ VỀ CHÚNG TÔI ============ -->
+  <section class="section about">
+    <div class="container">
+      <div class="about__top">
+        <div>
+          <span class="tag" data-reveal>{about.tag}</span>
+          <h2 class="h-section" data-reveal="words">{about.title}</h2>
+        </div>
+        <div class="about__right">
+          <p class="lead muted" data-reveal data-delay="200">{about.body}</p>
+          <div data-reveal data-delay="300"><Button href="/gioi-thieu-4b-label/" variant="dark">Câu chuyện của chúng tôi</Button></div>
         </div>
       </div>
-      {hero && <img src={hero} alt="" class="hero__img" />}
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>Tem nhãn theo ngành</h2>
-      <div class="grid">
-        {solutions.map((p) => <Card href={p.data.path} title={p.data.title} image={p.data.cover} text={p.data.description} />)}
+      <div class="about__grid">
+        <div class="about__img" data-reveal><img src={about.image} alt="Các cuộn tem nhãn thành phẩm" loading="lazy" /></div>
+        <ul class="stats">
+          {stats.map((s, i) => (
+            <li data-reveal data-delay={String(i * 120)}>
+              <strong><span data-count={s.value}>0</span>{s.suffix}</strong>
+              <span>{s.label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="section section--alt">
+  <!-- ============ TEM NHÃN THEO NGÀNH (carousel) ============ -->
+  <section class="section solutions" data-carousel>
     <div class="container">
-      <h2>Dịch vụ</h2>
-      <div class="grid">
-        {services.map((p) => <Card href={p.data.path} title={p.data.title} image={p.data.cover} text={p.data.description} />)}
+      <div class="sec-head">
+        <div>
+          <span class="tag" data-reveal>Sản phẩm</span>
+          <h2 class="h-section" data-reveal="words">Tem nhãn cho từng<br />ngành hàng</h2>
+        </div>
+        <div class="arrows" data-reveal>
+          <button data-prev aria-label="Trước"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3 5 8l5 5"/></svg></button>
+          <button data-next aria-label="Sau"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 3 5 5-5 5"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="track" data-track>
+      {solutions.map((p, i) => (
+        <a class="scard" href={p.data.path} data-reveal data-delay={String(Math.min(i, 4) * 90)}>
+          <img src={p.data.cover} alt="" loading="lazy" />
+          <div class="scard__body">
+            <span class="scard__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.data.title}</h3>
+            <p>{p.data.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="container sec-foot">
+      <p class="muted">Tem nhãn đạt chuẩn cho {solutions.length} nhóm ngành hàng và ứng dụng đặc biệt.</p>
+      <a href="/san-pham-4b-label/" class="link-arrow">Xem tất cả sản phẩm ↗</a>
+    </div>
+  </section>
+
+  <!-- ============ DỊCH VỤ (nền tối) ============ -->
+  <section class="section dark values">
+    <div class="container">
+      <div class="center-head">
+        <span class="tag" data-reveal>{values.tag}</span>
+        <h2 class="h-section" data-reveal="words">{values.title}</h2>
+        <p class="lead muted" data-reveal data-delay="200">{values.lead}</p>
+      </div>
+      <div class="values__grid">
+        {values.items.map((v, i) => (
+          <a class={`vcard vcard--${i}`} href={v.href} data-reveal data-delay={String(i * 100)}>
+            <span class="vcard__icon" set:html={icon(v.icon)} />
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </a>
+        ))}
+        <div class="values__img" data-reveal><img src={values.image} alt="Máy in tem nhãn cuộn" loading="lazy" /></div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- ============ QUY TRÌNH (mục lục dính) ============ -->
+  <section class="section process" data-steps>
     <div class="container">
-      <h2>Tin tức &amp; kiến thức</h2>
-      <div class="grid">
-        {posts.map((p) => <Card href={p.data.path} title={p.data.title} image={p.data.cover} text={p.data.description} />)}
+      <div class="sec-head">
+        <div>
+          <span class="tag" data-reveal>{process.tag}</span>
+          <h2 class="h-section" data-reveal="words">{process.title}</h2>
+        </div>
+        <p class="muted process__lead" data-reveal data-delay="200">{process.lead}</p>
+      </div>
+      <div class="process__body">
+        <nav class="process__nav" aria-label="Các bước">
+          <ol>
+            {process.steps.map((s, i) => <li><a href={`#${s.id}`} data-step-link class={i === 0 ? 'is-active' : ''}>{s.label}</a></li>)}
+          </ol>
+        </nav>
+        <div class="process__steps">
+          {process.steps.map((s, i) => (
+            <article id={s.id} class="step" data-step>
+              <div class="step__img" data-reveal><img src={s.image} alt="" loading="lazy" /></div>
+              <div class="step__text" data-reveal data-delay="120">
+                <span class="step__num">Bước {i + 1}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAM KẾT (thẻ trôi) ============ -->
+  <section class="section commit">
+    <div class="commit__float" aria-hidden="true">
+      {commitments.items.map((c, i) => (
+        <div class={`fcard fcard--${i}`}><div data-parallax={['0.18', '-0.12', '0.1', '-0.2'][i]}>
+          <span class="fcard__icon" set:html={icon('check')} />
+          <strong>{c.title}</strong>
+          <span>{c.text}</span>
+        </div></div>
+      ))}
+    </div>
+    <div class="container center-head commit__head">
+      <span class="tag" data-reveal>{commitments.tag}</span>
+      <h2 class="h-section" data-reveal="words">{commitments.title}</h2>
+      <p class="lead muted" data-reveal data-delay="200">{commitments.lead}</p>
+      <div data-reveal data-delay="300"><Button href="/lien-he/">Bắt đầu dự án tem nhãn</Button></div>
+    </div>
+    <!-- bản mobile: thẻ xếp lưới, không trôi -->
+    <ul class="container commit__list">
+      {commitments.items.map((c) => <li data-reveal><span class="fcard__icon" set:html={icon('check')} /><strong>{c.title}</strong><span>{c.text}</span></li>)}
+    </ul>
+  </section>
+
+  <!-- ============ VẬT TƯ (nền tối) ============ -->
+  <section class="section dark supplies">
+    <div class="container">
+      <div class="center-head">
+        <span class="tag" data-reveal>Vật tư in mã vạch</span>
+        <h2 class="h-section" data-reveal="words">Sẵn quy cách, giao nhanh</h2>
+      </div>
+      <div class="supplies__grid">
+        <a class="sup" href="/in-tem-nhan-ma-vach/" data-reveal>
+          <span class="sup__count"><span data-count={count('in-tem-nhan-ma-vach')}>0</span> quy cách</span>
+          <h3>Giấy decal in tem mã vạch</h3>
+          <p>Từ 35×22mm đến A6 100×150mm — decal trắng, decal màu đỏ, vàng, xanh ngọc, giấy in màu.</p>
+          <span class="sup__go">Xem quy cách ↗</span>
+        </a>
+        <a class="sup" href="/muc-in-ma-vach/" data-reveal data-delay="120">
+          <span class="sup__count"><span data-count={count('muc-in-ma-vach')}>0</span> quy cách</span>
+          <h3>Mực in mã vạch (ribbon)</h3>
+          <p>Wax Premium và Wax/Resin, khổ 80mm, 90mm, 110mm × 300m cho máy in mã vạch phổ biến.</p>
+          <span class="sup__go">Xem quy cách ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIN TỨC ============ -->
+  <section class="section blog">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <span class="tag" data-reveal>Kiến thức</span>
+          <h2 class="h-section" data-reveal="words">Tin tức &amp; kinh nghiệm<br />tem nhãn</h2>
+        </div>
+        <div data-reveal><Button href="/tin-tuc-su-kien/">Xem tất cả bài viết</Button></div>
+      </div>
+      <div class="blog__grid">
+        {posts.map((p, i) => (
+          <a class="post" href={p.data.path} data-reveal data-delay={String(i * 120)}>
+            <div class="post__img">{p.data.cover && <img src={p.data.cover} alt="" loading="lazy" />}</div>
+            <span class="post__meta">{fmtDate(p.data.date)}</span>
+            <h3>{p.data.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HỎI ĐÁP ============ -->
+  <section class="section faq">
+    <div class="container faq__grid">
+      <div class="faq__left">
+        <span class="tag" data-reveal>Hỏi đáp</span>
+        <h2 class="h-section" data-reveal="words">Câu hỏi thường gặp</h2>
+        <div class="faq__help" data-reveal data-delay="200">
+          <strong>Cần tư vấn chất liệu?</strong>
+          <p class="muted">Gọi <a href={site.contact.phoneHref}>{site.contact.phone}</a> hoặc gửi yêu cầu, chúng tôi phản hồi sớm nhất.</p>
+          <Button href="/lien-he/" variant="dark">Liên hệ</Button>
+        </div>
+      </div>
+      <div class="faq__list">
+        {faqs.map((f, i) => (
+          <details class="qa" data-reveal data-delay={String(i * 80)} open={i === 0}>
+            <summary>{f.q}<span class="qa__plus" aria-hidden="true"></span></summary>
+            <div class="qa__a"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-wrap">
+    <div class="container">
+      <div class="cta">
+        <img src={cta.image} alt="" loading="lazy" class="cta__bg" />
+        <div class="cta__inner">
+          <h2 class="h-section" data-reveal="words">{cta.title}</h2>
+          <p class="lead" data-reveal data-delay="200">{cta.lead}</p>
+          <div data-reveal data-delay="300"><Button href="/lien-he/">Nhận báo giá</Button></div>
+        </div>
       </div>
     </div>
   </section>
 </Base>
 
 <style>
-  .hero { background: var(--color-surface-alt); padding-block: var(--section); }
-  .hero__inner { display: grid; gap: 40px; align-items: center; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-  .lead { font-size: 1.125rem; color: var(--color-ink-muted); max-width: 52ch; }
-  .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-  .hero__img { border-radius: var(--radius); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
-  h2 { margin-top: 0; }
+  /* ---------- hero ---------- */
+  .hero { position: relative; background: radial-gradient(120% 80% at 80% 0%, var(--navy-850) 0%, var(--navy-950) 60%); color: var(--on-dark); padding-top: clamp(140px, 18vh, 200px); overflow: hidden; }
+  .hero__waves { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .hero__inner { position: relative; }
+  .hero__title { max-width: 14ch; font-weight: 400; }
+  .hero__bottom { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 360px); justify-content: space-between; align-items: end; gap: 48px; margin-top: clamp(56px, 10vh, 120px); padding-bottom: 56px; }
+  .hero__left .lead { color: var(--on-dark); }
+  .hero__rule { height: 1px; background: var(--line-dark); margin: 28px 0; }
+  .hero__media { margin: 0; position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius-card); }
+  .hero__media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); animation: kenburns 18s ease-in-out infinite alternate; }
+  .hero__media figcaption { position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgb(4 11 24 / 0.6); backdrop-filter: blur(8px); font-size: 0.8rem; border-radius: var(--radius); }
+  .hero__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: pulse 2s infinite; }
+  @keyframes kenburns { to { transform: scale(1.16) translate(-2%, -2%); } }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+  .ticker { position: relative; border-top: 1px solid var(--line-dark); padding-block: 22px; color: var(--on-dark-3); font-size: 1.05rem; }
+  .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee__track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  .marquee ul { display: flex; list-style: none; margin: 0; padding: 0; }
+  .marquee li { padding-inline: 32px; white-space: nowrap; }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  .bigmarq { padding-block: clamp(40px, 6vw, 72px); background: var(--white); border-bottom: 1px solid var(--line); }
+  .bigmarq .marquee__track { animation-duration: 60s; }
+  .bigmarq li { font-size: clamp(2.5rem, 6vw, 5.25rem); letter-spacing: -0.045em; line-height: 1.1; color: var(--ink); padding-inline: 0; display: flex; align-items: center; }
+  .bigmarq li::after { content: '•'; color: var(--accent-strong); margin-inline: clamp(20px, 3vw, 44px); font-size: 0.5em; }
+
+  /* ---------- tiêu đề khối ---------- */
+  .tag + .h-section, .tag + h2 { margin-top: 18px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; margin-bottom: 56px; }
+  .sec-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 40px; }
+  .center-head { text-align: center; max-width: 760px; margin-inline: auto; display: flex; flex-direction: column; align-items: center; }
+  .center-head .lead { margin-top: 20px; max-width: 56ch; }
+  .center-head > div:last-child { margin-top: 32px; }
+
+  /* ---------- về chúng tôi ---------- */
+  .about { background: var(--white); }
+  .about__top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: end; }
+  .about__right { display: grid; gap: 28px; justify-items: start; }
+  .about__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; margin-top: 72px; align-items: stretch; }
+  .about__img { overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 4 / 3; }
+  .about__img img { width: 100%; height: 100%; object-fit: cover; }
+  .stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+  .stats li { padding: 32px 0; border-bottom: 1px solid var(--line); display: grid; align-content: space-between; gap: 12px; }
+  .stats li:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--line); }
+  .stats li:nth-child(even) { padding-left: 28px; }
+  .stats strong { font-size: clamp(2.75rem, 5vw, 4.25rem); font-weight: 400; letter-spacing: -0.05em; line-height: 1; color: var(--ink); }
+  .stats span:last-child { color: var(--ink-3); }
+
+  /* ---------- carousel ngành ---------- */
+  .arrows { display: flex; gap: 8px; }
+  .arrows button { width: 48px; height: 48px; display: grid; place-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 50%; cursor: pointer; color: var(--ink); transition: background 0.3s, color 0.3s, border-color 0.3s; }
+  .arrows button:hover { background: var(--navy-900); color: var(--on-dark); border-color: var(--navy-900); }
+  .arrows svg { width: 16px; height: 16px; }
+  .track { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(270px, 28vw, 380px); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))); padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))); scrollbar-width: none; }
+  .track::-webkit-scrollbar { display: none; }
+  .scard { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--radius-card); scroll-snap-align: start; color: var(--on-dark); text-decoration: none; background: var(--navy-900); }
+  .scard img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+  .scard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgb(4 11 24 / 0.92) 100%); transition: opacity 0.5s; }
+  .scard:hover img { transform: scale(1.08); }
+  .scard__body { position: absolute; inset: auto 0 0; z-index: 1; padding: 24px; }
+  .scard__num { font-size: 0.8rem; color: var(--accent); }
+  .scard h3 { font-size: 1.45rem; margin-top: 8px; }
+  .scard p { margin-top: 8px; font-size: 0.9rem; color: var(--on-dark-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.6s var(--ease-out), opacity 0.4s; }
+  .scard:hover p, .scard:focus-visible p { max-height: 3.2em; opacity: 1; }
+  .solutions { background: var(--paper); }
+
+  /* ---------- dịch vụ tối ---------- */
+  .values { background: radial-gradient(90% 60% at 50% 0%, var(--navy-850), var(--navy-900) 70%); }
+  .values__grid { display: grid; grid-template-columns: 1fr 1.05fr 1fr; grid-template-rows: auto auto; gap: 20px; margin-top: 72px; }
+  .values__img { grid-column: 2; grid-row: 1 / span 2; overflow: hidden; border-radius: var(--radius-card); min-height: 420px; }
+  .values__img img { width: 100%; height: 100%; object-fit: cover; }
+  .vcard { display: flex; flex-direction: column; gap: 14px; padding: 32px; background: rgb(255 255 255 / 0.04); border: 1px solid var(--line-dark); border-radius: var(--radius-card); text-decoration: none; transition: background 0.4s, border-color 0.4s, transform 0.5s var(--ease-out); }
+  .vcard:hover { background: rgb(94 168 255 / 0.08); border-color: rgb(94 168 255 / 0.35); transform: translateY(-4px); }
+  .vcard--0 { grid-column: 1; grid-row: 1; } .vcard--1 { grid-column: 3; grid-row: 1; }
+  .vcard--2 { grid-column: 1; grid-row: 2; } .vcard--3 { grid-column: 3; grid-row: 2; }
+  .vcard__icon { width: 44px; height: 44px; display: grid; place-items: center; background: var(--accent); color: var(--navy-950); border-radius: var(--radius); margin-bottom: auto; }
+  .vcard__icon :global(svg) { width: 22px; height: 22px; }
+  .vcard h3 { font-size: 1.35rem; margin-top: 40px; }
+  .vcard p { color: var(--on-dark-2); font-size: 0.95rem; }
+
+  /* ---------- quy trình ---------- */
+  .process { background: var(--white); }
+  .process__lead { max-width: 44ch; }
+  .process__body { display: grid; grid-template-columns: 240px 1fr; gap: 64px; }
+  .process__nav { position: sticky; top: 120px; align-self: start; }
+  .process__nav ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .process__nav a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-size: 1.15rem; color: var(--ink-3); opacity: 0.55; transition: opacity 0.4s, color 0.4s; }
+  .process__nav a::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; transition: background 0.4s, transform 0.4s; }
+  .process__nav a.is-active { color: var(--ink); opacity: 1; }
+  .process__nav a.is-active::before { background: var(--accent-strong); transform: scale(1.4); }
+  .process__steps { display: grid; gap: 96px; }
+  .step { display: grid; gap: 28px; scroll-margin-top: 120px; }
+  .step__img { overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 16 / 9; background: var(--paper); }
+  .step__img img { width: 100%; height: 100%; object-fit: cover; }
+  .step__text { display: grid; grid-template-columns: 200px 1fr; gap: 8px 32px; }
+  .step__num { font-size: 0.85rem; color: var(--accent-strong); grid-row: span 2; padding-top: 6px; }
+  .step h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+  .step p { color: var(--ink-2); max-width: 56ch; }
+
+  /* ---------- cam kết ---------- */
+  .commit { position: relative; background: var(--paper); overflow: hidden; min-height: 820px; display: grid; align-content: center; }
+  .commit__head { position: relative; z-index: 1; max-width: 640px; }
+  .commit__float { position: absolute; inset: 0; pointer-events: none; }
+  .fcard { position: absolute; width: 260px; }
+  .fcard > div { display: grid; gap: 10px; padding: 24px; background: var(--navy-900); color: var(--on-dark); border-radius: var(--radius-card); box-shadow: 0 30px 60px -20px rgb(7 22 48 / 0.45); will-change: transform; }
+  .fcard strong { font-size: 1.15rem; font-weight: 500; letter-spacing: -0.02em; }
+  .fcard span:last-child { color: var(--on-dark-2); font-size: 0.9rem; line-height: 1.5; }
+  .fcard__icon { width: 36px; height: 36px; display: grid; place-items: center; background: var(--accent); color: var(--navy-950); border-radius: var(--radius); }
+  .fcard__icon :global(svg) { width: 18px; height: 18px; }
+  .fcard--0 { left: 4%; top: 10%; } .fcard--1 { right: 5%; top: 6%; }
+  .fcard--2 { left: 8%; bottom: 8%; } .fcard--3 { right: 3%; bottom: 14%; }
+  .commit__list { display: none; }
+
+  /* ---------- vật tư ---------- */
+  .supplies__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 64px; }
+  .sup { position: relative; display: grid; gap: 16px; padding: clamp(28px, 4vw, 48px); min-height: 340px; align-content: end; background: rgb(255 255 255 / 0.04); border: 1px solid var(--line-dark); border-radius: var(--radius-card); text-decoration: none; overflow: hidden; transition: border-color 0.4s; }
+  .sup::before { content: ''; position: absolute; inset: 0; background: radial-gradient(80% 80% at 100% 0%, rgb(94 168 255 / 0.22), transparent 60%); opacity: 0; transition: opacity 0.6s; }
+  .sup:hover { border-color: rgb(94 168 255 / 0.4); }
+  .sup:hover::before { opacity: 1; }
+  .sup__count { position: absolute; top: clamp(28px, 4vw, 48px); left: clamp(28px, 4vw, 48px); font-size: 0.875rem; color: var(--accent); }
+  .sup h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); position: relative; }
+  .sup p { color: var(--on-dark-2); max-width: 44ch; position: relative; }
+  .sup__go { position: relative; color: var(--on-dark); font-weight: 500; }
+
+  /* ---------- blog ---------- */
+  .blog { background: var(--white); }
+  .blog__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .post { display: grid; gap: 12px; text-decoration: none; }
+  .post__img { overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 4 / 3; background: var(--paper); }
+  .post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease-out); }
+  .post:hover .post__img img { transform: scale(1.06); }
+  .post__meta { font-size: 0.85rem; color: var(--ink-3); margin-top: 8px; }
+  .post h3 { font-size: 1.35rem; line-height: 1.2; transition: color 0.3s; }
+  .post:hover h3 { color: var(--accent-strong); }
+
+  /* ---------- hỏi đáp ---------- */
+  .faq { background: var(--paper); }
+  .faq__grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start; }
+  .faq__left { position: sticky; top: 120px; display: grid; gap: 18px; justify-items: start; }
+  .faq__help { margin-top: 48px; padding: 28px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-card); display: grid; gap: 12px; justify-items: start; }
+  .faq__help strong { font-weight: 500; font-size: 1.1rem; }
+  .faq__help a { color: var(--accent-strong); }
+  .faq__list { display: grid; gap: 12px; }
+  .qa { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-card); transition: border-color 0.3s; }
+  .qa[open] { border-color: rgb(47 134 246 / 0.4); }
+  .qa summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 24px; cursor: pointer; list-style: none; font-size: 1.1rem; letter-spacing: -0.01em; }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa__plus { position: relative; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--navy-900); }
+  .qa__plus::before, .qa__plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: var(--accent); transform: translate(-50%, -50%); transition: transform 0.4s var(--ease-out); }
+  .qa__plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .qa[open] .qa__plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+  .qa__a { padding: 0 24px 24px; color: var(--ink-2); }
+  .qa[open] .qa__a { animation: qa-in 0.5s var(--ease-out); }
+  @keyframes qa-in { from { opacity: 0; transform: translateY(-6px); } }
+
+  /* ---------- CTA ---------- */
+  .cta-wrap { background: var(--paper); padding-bottom: var(--section); }
+  .cta { position: relative; overflow: hidden; border-radius: var(--radius-card); min-height: 520px; display: grid; place-items: center; text-align: center; color: var(--on-dark); background: var(--navy-950); }
+  .cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
+  .cta::after { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 50%, rgb(7 22 48 / 0.35), rgb(4 11 24 / 0.85)); }
+  .cta__inner { position: relative; z-index: 1; display: grid; gap: 20px; justify-items: center; padding: 48px 24px; max-width: 760px; }
+  .cta .lead { color: var(--on-dark-2); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1100px) {
+    .fcard { width: 220px; }
+    .fcard--0 { left: 2%; } .fcard--2 { left: 2%; } .fcard--1, .fcard--3 { right: 2%; }
+  }
+  @media (max-width: 960px) {
+    .hero__bottom, .about__top, .about__grid, .faq__grid { grid-template-columns: 1fr; }
+    .hero__media { max-width: 520px; }
+    .values__grid { grid-template-columns: 1fr 1fr; }
+    .values__img { grid-column: 1 / -1; grid-row: 1; min-height: 320px; }
+    .vcard--0, .vcard--1, .vcard--2, .vcard--3 { grid-column: auto; grid-row: auto; }
+    .process__body { grid-template-columns: 1fr; }
+    .process__nav { display: none; }
+    .step__text { grid-template-columns: 1fr; }
+    .commit { min-height: 0; }
+    .commit__float { display: none; }
+    .commit__list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; list-style: none; margin-top: 56px; }
+    .commit__list li { display: grid; gap: 10px; padding: 24px; background: var(--navy-900); color: var(--on-dark); border-radius: var(--radius-card); }
+    .commit__list span:last-child { color: var(--on-dark-2); font-size: 0.9rem; }
+    .blog__grid { grid-template-columns: 1fr 1fr; }
+    .faq__left { position: static; }
+    .faq__help { margin-top: 16px; }
+  }
+  @media (max-width: 640px) {
+    .values__grid, .supplies__grid, .blog__grid, .commit__list { grid-template-columns: 1fr; }
+    .stats li:nth-child(odd) { padding-right: 16px; }
+    .stats li:nth-child(even) { padding-left: 16px; }
+    .vcard h3 { margin-top: 24px; }
+  }
 </style>

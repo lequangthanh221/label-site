@@ -1,0 +1,15 @@
+---
+// Logo tạm (chưa có brand). Dùng currentColor để tự đổi màu theo nền.
+import { site } from '../config/site';
+---
+<span class="logo" aria-label={site.name}>
+  <svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
+    <rect x="1" y="1" width="26" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+    <path d="M8 9h12M8 14h12M8 19h7" stroke="var(--accent)" stroke-width="1.8" />
+  </svg>
+  <span class="logo__text">Brand<span class="logo__dot">.</span></span>
+</span>
+<style>
+  .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.2rem; letter-spacing: -0.03em; }
+  .logo__dot { color: var(--accent); }
+</style>

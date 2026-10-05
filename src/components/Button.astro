@@ -1,0 +1,10 @@
+---
+// Nút 2 phần theo mẫu: chữ + ô mũi tên (mũi tên trượt chéo khi hover)
+interface Props { href: string; variant?: 'primary' | 'ghost' | 'dark'; class?: string }
+const { href, variant = 'primary', class: cls = '' } = Astro.props;
+const arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg>';
+---
+<a href={href} class:list={['btn', variant !== 'primary' && `btn--${variant}`, cls]}>
+  <span><slot /></span>
+  <span class="btn__arrow" set:html={arrow + arrow} />
+</a>

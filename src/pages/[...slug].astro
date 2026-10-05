@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import Card from '../components/Card.astro';
 import ContactBlock from '../components/ContactBlock.astro';
 import { site } from '../config/site';
+import Button from '../components/Button.astro';
 
 type Entry = CollectionEntry<'pages'> | CollectionEntry<'posts'>;
 
@@ -81,13 +82,14 @@ if (isPost) {
   type={isPost ? 'article' : 'website'}
   jsonLd={jsonLd}
 >
-  <div class="page-head section--alt">
+  <div class="page-head">
     <div class="container">
-      <nav class="crumbs" aria-label="Breadcrumb">
+      <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
         {crumbs.slice(0, -1).map((c) => <><a href={c.path}>{c.name}</a><span aria-hidden="true">/</span></>)}
       </nav>
-      <h1>{entry.data.title}</h1>
-      {isPost && <p class="muted">{new Date((entry as CollectionEntry<'posts'>).data.date).toLocaleDateString('vi-VN')}</p>}
+      <h1 class="page-title" data-reveal="words">{entry.data.title}</h1>
+      {isPost && <p class="page-meta" data-reveal data-delay="300">{new Date((entry as CollectionEntry<'posts'>).data.date).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>}
+      {!isPost && entry.data.description && page?.data.kind !== 'info' && <p class="page-meta lead" data-reveal data-delay="300">{entry.data.description}</p>}
     </div>
   </div>
 
@@ -107,25 +109,30 @@ if (isPost) {
   </div>
 
   {!isContact && (
-    <section class="cta section--alt">
-      <div class="container cta__inner">
+    <section class="cta-band">
+      <div class="container cta-band__inner">
         <div>
-          <h2>Cần tư vấn tem nhãn cho sản phẩm của bạn?</h2>
-          <p class="muted">Gọi {site.contact.phone} hoặc gửi yêu cầu, chúng tôi phản hồi trong ngày.</p>
+          <h2 data-reveal="words">Cần tư vấn tem nhãn cho sản phẩm của bạn?</h2>
+          <p data-reveal data-delay="200">Gọi {site.contact.phone} hoặc gửi yêu cầu, chúng tôi phản hồi trong ngày.</p>
         </div>
-        <a class="btn" href="/lien-he/">Liên hệ ngay</a>
+        <div data-reveal data-delay="300"><Button href="/lien-he/">Liên hệ ngay</Button></div>
       </div>
     </section>
   )}
 </Base>
 
 <style>
-  .page-head { padding-block: 40px 32px; }
-  .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.875rem; margin-bottom: 8px; color: var(--color-ink-muted); }
-  .crumbs a { color: inherit; }
-  .listing { margin-top: 48px; }
-  .cta { padding-block: 48px; }
-  .cta__inner { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
-  .cta h2 { margin: 0 0 4px; }
-  .cta p { margin: 0; }
+  .page-head { position: relative; padding: clamp(150px, 20vh, 200px) 0 clamp(56px, 8vw, 96px); background: radial-gradient(110% 90% at 85% 0%, var(--navy-850), var(--navy-950) 65%); color: var(--on-dark); overflow: hidden; }
+  .crumbs { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.875rem; margin-bottom: 20px; color: var(--on-dark-3); }
+  .crumbs a { color: var(--on-dark-2); text-decoration: none; }
+  .crumbs a:hover { color: var(--accent); }
+  .page-title { font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: var(--track-display); line-height: 1.02; max-width: 18ch; }
+  .page-meta { margin-top: 24px; color: var(--on-dark-2); max-width: 60ch; }
+  .section { background: var(--white); }
+  .listing { margin-top: 72px; }
+  .listing h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 32px; }
+  .cta-band { background: var(--navy-900); color: var(--on-dark); padding-block: clamp(56px, 8vw, 96px); }
+  .cta-band__inner { display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
+  .cta-band h2 { font-size: clamp(1.75rem, 3.2vw, 2.75rem); max-width: 20ch; }
+  .cta-band p { margin-top: 12px; color: var(--on-dark-2); }
 </style>

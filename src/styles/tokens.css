@@ -1,27 +1,62 @@
 /* ============================================================
-   BRAND TOKENS — thay bộ này theo brand guidelines của công ty mới.
-   Component chỉ dùng biến, không viết mã màu trực tiếp.
+   BRAND TOKENS — bản thử theo tinh thần Consilio, tông xanh dương đậm.
+   Khi có brand guidelines thật: chỉ thay các biến dưới đây.
    ============================================================ */
 :root {
-  /* màu */
-  --color-brand: #1f4e79;
-  --color-brand-contrast: #ffffff;
-  --color-accent: #e0a526;
-  --color-ink: #1b1f24;
-  --color-ink-muted: #5b6470;
-  --color-surface: #ffffff;
-  --color-surface-alt: #f4f5f7;
-  --color-line: #e2e5e9;
+  /* nền tối (hero, khối nhấn, footer) */
+  --navy-950: #040b18;
+  --navy-900: #071630;
+  --navy-850: #0b1f40;
+  --navy-800: #102a52;
+  --navy-700: #183a6e;
+
+  /* màu nhấn: xanh sáng trên nền tối, đủ tương phản cho chữ navy đặt lên */
+  --accent: #5ea8ff;
+  --accent-strong: #2f86f6;
+  --accent-soft: #d6e7ff;
+
+  /* nền sáng */
+  --paper: #f3f6fb;
+  --paper-2: #e8eef7;
+  --white: #ffffff;
 
   /* chữ */
-  --font-body: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ink: #071630;
+  --ink-2: #3c4d69;
+  --ink-3: #6b7a93;
+  --on-dark: #eef4ff;
+  --on-dark-2: rgb(238 244 255 / 0.68);
+  --on-dark-3: rgb(238 244 255 / 0.45);
+
+  --line: rgb(7 22 48 / 0.1);
+  --line-dark: rgb(255 255 255 / 0.1);
+
+  /* chữ */
+  --font-body: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-heading: var(--font-body);
   --text-base: 1rem;
-  --leading: 1.65;
+  --leading: 1.6;
+  --track-display: -0.055em;
+  --track-heading: -0.035em;
 
   /* nhịp và bo góc */
-  --radius: 6px;
-  --container: 1200px;
-  --gutter: clamp(16px, 4vw, 32px);
-  --section: clamp(48px, 8vw, 96px);
+  --radius: 2px;
+  --radius-card: 4px;
+  --container: 1280px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section: clamp(72px, 10vw, 140px);
+
+  /* chuyển động */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.9s;
+
+  /* tương thích các component cũ */
+  --color-brand: var(--navy-900);
+  --color-brand-contrast: var(--on-dark);
+  --color-accent: var(--accent);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-3);
+  --color-surface: var(--white);
+  --color-surface-alt: var(--paper);
+  --color-line: var(--line);
 }

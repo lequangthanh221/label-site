@@ -32,10 +32,12 @@ const organization = {
 };
 ---
 <!doctype html>
-<html lang="vi">
+<html lang="vi" class="no-js">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>document.documentElement.classList.remove('no-js')</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#040b18" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {!allowIndex && <meta name="robots" content="noindex, nofollow" />}
@@ -52,14 +54,17 @@ const organization = {
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
     {[organization, ...jsonLd].map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
   </head>
-  <body>
+  <body id="top">
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
+    <script>
+      import '../scripts/motion';
+    </script>
   </body>
 </html>
