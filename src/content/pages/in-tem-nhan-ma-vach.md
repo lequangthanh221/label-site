@@ -6,7 +6,7 @@ parent: ""
 order: 0
 seoTitle: "In tem nhãn mã vạch - 4B Label"
 description: "Giấy decal in tem mã vạch 90mm x 60mm Giấy decal in tem mã vạch 60mm x 40mm (in màu) Giấy decal in tem mã vạch 60mm x 40mm (vàng) Giấy decal in tem mã vạch…"
-cover: "/uploads/2020/08/Logo-light.webp"
+cover: "/uploads/2020/09/e0b8da6768aa97f4cebb.webp"
 updated: "2020-10-16"
 ---
 

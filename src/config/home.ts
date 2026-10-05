@@ -32,7 +32,7 @@ export const values = {
   tag: 'Dịch vụ',
   title: 'Trọn quy trình tem nhãn dưới một mái nhà',
   lead: 'Tất cả những gì chúng tôi thực hiện đều nhằm mang đến dịch vụ tốt nhất cho khách hàng.',
-  image: '/uploads/2020/09/968a589eeb53140d4d42.webp',
+  image: '/uploads/2020/09/Picture13-2.webp',
   items: [
     { icon: 'pen', title: 'Thiết kế tem nhãn, bao bì', text: 'Thiết kế phù hợp loại sản phẩm, phân khúc và định hướng thương hiệu — vừa đúng chuẩn, vừa tạo ấn tượng mới lạ.', href: '/thiet-ke-tem-nhan-bao-bi/' },
     { icon: 'layers', title: 'Tư vấn chất liệu', text: 'Hàng trăm tổ hợp lớp bề mặt, lớp keo, lớp đế — chọn đúng loại decal cho môi trường sử dụng thực tế.', href: '/tu-van-chat-lieu-tem-nhan/' },
@@ -49,7 +49,7 @@ export const process = {
     { id: 'y-tuong', label: 'Ý tưởng', title: 'Lên ý tưởng & thiết kế', text: 'Vẽ bản thiết kế tem nhãn theo kích thước vật chứa, màu sắc nổi bật trên nền bao bì và nội dung đầy đủ theo quy định pháp luật.', image: '/uploads/2020/09/Picture19.webp' },
     { id: 'vat-lieu', label: 'Vật liệu', title: 'Chọn vật liệu & báo giá', text: 'Giấy hay nhựa PP, PE, PET; keo acrylic hay hot-melt; đế giấy hay glassine — tư vấn theo điều kiện sử dụng, kèm báo giá rõ ràng.', image: '/uploads/2020/09/33e115f2a63f5961002e-scaled.webp' },
     { id: 'in-thu', label: 'In thử', title: 'In thử, kiểm tra màu và kích thước', text: 'Công nghệ in ảnh hưởng không nhỏ đến màu sắc hiển thị. In mẫu thử trước để chắc chắn tem nhãn đúng như mong đợi.', image: '/uploads/2020/09/ee750b7bb8b647e81ea7.webp' },
-    { id: 'san-xuat', label: 'Sản xuất', title: 'In ấn & sản xuất hàng loạt', text: 'In, cắt bế thành phẩm chuẩn xác — đúng hẹn, sạch sẽ, không trầy vết, chạy đủ nhãn và đủ kích thước.', image: '/uploads/2020/09/Picture13.webp' },
+    { id: 'san-xuat', label: 'Sản xuất', title: 'In ấn & sản xuất hàng loạt', text: 'In, cắt bế thành phẩm chuẩn xác — đúng hẹn, sạch sẽ, không trầy vết, chạy đủ nhãn và đủ kích thước.', image: '/uploads/2020/09/Picture20.webp' },
   ],
 };
 

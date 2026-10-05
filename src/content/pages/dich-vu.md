@@ -6,7 +6,7 @@ parent: ""
 order: 0
 seoTitle: "Dịch vụ - 4B Label"
 description: "Những dịch vụ hàng đầu của 4B Label Tất cả những gì chúng tôi thực hiện đều nhằm mang đến dịch vụ tốt nhất cho khách hàng. Thiết kế tem nhãn, bao bì Sản phẩm…"
-cover: "/uploads/2020/08/Logo-light.webp"
+cover: ""
 updated: "2020-10-16"
 ---
 

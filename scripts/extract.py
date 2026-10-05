@@ -258,7 +258,7 @@ def main():
             "order": p["menu_order"],
             "seoTitle": seo.get("seoTitle", ""),
             "description": seo.get("seoDescription") or first_text(body),
-            "cover": imgs[0]["src"] if imgs else "",
+            "cover": next((i["src"] for i in imgs if "Logo" not in i["src"]), ""),
             "updated": p["modified"][:10],
         }
         write("pages", slug, front, body)

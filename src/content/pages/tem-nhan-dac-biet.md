@@ -6,7 +6,7 @@ parent: ""
 order: 0
 seoTitle: "In tem nhãn đặc biệt - 4B Label"
 description: "In tem nhãn niêm phong In tem nhãn khăn giấy ướt Bạn đang tìm sản phẩm tem nhãn tốt nhất? Liên hệ ngay với chúng tôi LIÊN HỆ"
-cover: "/uploads/2020/08/Logo-light.webp"
+cover: "/uploads/2020/10/Picture1-1.webp"
 updated: "2020-10-18"
 ---
 
