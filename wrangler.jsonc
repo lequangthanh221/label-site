@@ -1,9 +1,9 @@
-// Cloudflare Workers — phục vụ site tĩnh trong dist/ (không có code server)
+// Cloudflare Workers - phục vụ site tĩnh trong out/ (next build) (không có code server)
 {
   "name": "label-site",
   "compatibility_date": "2026-10-01",
   "assets": {
-    "directory": "./dist",
+    "directory": "./out",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
   },

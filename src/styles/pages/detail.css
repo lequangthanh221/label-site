@@ -1,0 +1,12 @@
+/* chuyển từ [...slug].astro */
+.page-head { position: relative; padding: clamp(150px, 20vh, 200px) 0 clamp(56px, 8vw, 96px); background: radial-gradient(110% 90% at 85% 0%, var(--navy-850), var(--navy-950) 65%); color: var(--on-dark); overflow: hidden; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.875rem; margin-bottom: 20px; color: var(--on-dark-3); }
+.crumbs a { color: var(--on-dark-2); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+.page-title { font-size: clamp(2.5rem, 5.6vw, 4.75rem); font-weight: var(--w-display); letter-spacing: var(--track-display); line-height: 1.02; max-width: 18ch; }
+.page-meta { margin-top: 24px; color: var(--on-dark-2); max-width: 60ch; }
+.page-body { background: var(--white); padding-block: var(--section); }
+.listing { margin-top: 72px; }
+.listing { padding-top: 56px; border-top: 1px solid var(--line); }
+.listing h2 { font-size: clamp(1.9rem, 3.2vw, 2.75rem); margin-bottom: 40px; }
+.listing--solo { margin-top: 0; padding-top: 0; border-top: 0; }

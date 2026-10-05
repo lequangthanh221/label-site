@@ -4,7 +4,7 @@ kind: "service"
 path: "/thiet-ke-tem-nhan-bao-bi/"
 parent: ""
 order: 0
-seoTitle: "Thiết kế tem nhãn, bao bì - 4B Label"
+seoTitle: "Thiết kế tem nhãn, bao bì - Temnhanmavach"
 description: "Thiết kế tem nhãn, bao bì Tem nhãn bao bì là một trong những yếu tố quan trọng trong việc Marketing thương hiệu. Thiết kế tem nhãn bao bì là bước đầu tiên…"
 cover: "/uploads/2020/09/Picture1.webp"
 updated: "2020-09-28"
@@ -21,9 +21,9 @@ Tem nhãn bao bì là một trong những <strong>yếu tố quan trọng</stron
 </ul>
 <p>Có thể cùng là mỹ phẩm nhưng có thương hiệu hướng sản phẩm đến hình ảnh sang trọng, thương hiệu khác lại chú trọng yếu tố môi trường.</p>
 <p>Vì vậy thiết kế tem nhãn phải vừa tuân theo <strong>định hướng sản phẩm</strong> của công ty, lại phải tạo nên sự <strong>ấn tượng mới lạ</strong> với khách hàng.</p>
-<figure><img alt="in tem nhãn thực phẩm 4b label" loading="lazy" src="/uploads/2020/09/Picture1.webp"/></figure>
-<figure><img alt="In tem nhãn đông lạnh 4b label" loading="lazy" src="/uploads/2020/09/Picture5-1.webp"/></figure>
-<figure><img alt="In tem nhãn hoá phẩm 4B Label" loading="lazy" src="/uploads/2020/09/Picture9-1.webp"/></figure>
+<figure><img alt="in tem nhãn thực phẩm Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture1.webp"/></figure>
+<figure><img alt="In tem nhãn đông lạnh Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture5-1.webp"/></figure>
+<figure><img alt="In tem nhãn hoá phẩm Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture9-1.webp"/></figure>
 <h2>Các yếu tố doanh nghiệp nên cân nhắc khi thiết kế nhãn:</h2>
 <ul>
 <li><strong>Kích thước:</strong> Tem nhãn bao bì phải có tỷ lệ phù hợp với vật chứa (chai, lọ, hủ,…).</li>
@@ -43,17 +43,17 @@ Tem nhãn bao bì là một trong những <strong>yếu tố quan trọng</stron
 <li><strong>In thử để kiểm tra màu sắc, kích thước.</strong></li>
 <li><strong>In ấn và sản xuất hàng loạt. </strong></li>
 </ol>
-<p><strong>4B Label</strong> có kinh nghiệm tư vấn thiết kế và in ấn tem nhãn bao bì cho nhiều ngành sản phẩm, công nghiệp khác nhau. Chúng tôi có đa dạng nguồn nguyên vật liệu đáp ứng mọi nhu cầu của quý khách.</p>
-<figure><img alt="In tem nhãn đông lạnh 4b label" loading="lazy" src="/uploads/2020/09/Picture2-1.webp"/></figure>
+<p><strong>Temnhanmavach</strong> có kinh nghiệm tư vấn thiết kế và in ấn tem nhãn bao bì cho nhiều ngành sản phẩm, công nghiệp khác nhau. Chúng tôi có đa dạng nguồn nguyên vật liệu đáp ứng mọi nhu cầu của quý khách.</p>
+<figure><img alt="In tem nhãn đông lạnh Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture2-1.webp"/></figure>
 <p>
 Một số mẫu tem nhãn chúng tôi đã thiết kế và in ấn
 </p>
-<h2>Hình ảnh sản phẩm của 4B Label</h2>
-<figure><img alt="in tem nhãn logistic 4b label" loading="lazy" src="/uploads/2020/09/Picture13.webp"/></figure>
-<figure><img alt="tem nhãn thép 4b label" loading="lazy" src="/uploads/2020/09/ee750b7bb8b647e81ea7.webp"/></figure>
+<h2>Hình ảnh sản phẩm của Temnhanmavach</h2>
+<figure><img alt="in tem nhãn logistic Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture13.webp"/></figure>
+<figure><img alt="tem nhãn thép Temnhanmavach" loading="lazy" src="/uploads/2020/09/ee750b7bb8b647e81ea7.webp"/></figure>
 <figure><img alt="decal cảm nhiệt trực tiếp" loading="lazy" src="/uploads/2020/09/8e5b4d5c1894e7cabe85.webp"/></figure>
-<figure><img alt="in tem nhãn logistic 4b label" loading="lazy" src="/uploads/2020/09/Picture10.webp"/></figure>
-<figure><img alt="in tem nhãn thực phẩm 4b label" loading="lazy" src="/uploads/2020/09/Picture2.webp"/></figure>
-<figure><img alt="In tem nhãn hoá phẩm 4B Label" loading="lazy" src="/uploads/2020/09/Picture11-1.webp"/></figure>
-<figure><img alt="In tem nhãn mỹ phẩm 4B Label" loading="lazy" src="/uploads/2020/09/Picture17-1.webp"/></figure>
-<figure><img alt="In tem nhãn đông lạnh 4b label" loading="lazy" src="/uploads/2020/09/Picture1-1.webp"/></figure>
+<figure><img alt="in tem nhãn logistic Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture10.webp"/></figure>
+<figure><img alt="in tem nhãn thực phẩm Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture2.webp"/></figure>
+<figure><img alt="In tem nhãn hoá phẩm Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture11-1.webp"/></figure>
+<figure><img alt="In tem nhãn mỹ phẩm Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture17-1.webp"/></figure>
+<figure><img alt="In tem nhãn đông lạnh Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture1-1.webp"/></figure>

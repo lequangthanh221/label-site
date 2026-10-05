@@ -18,12 +18,14 @@ CONTENT = os.path.join(ROOT, "src", "content")
 PUBLIC = os.path.join(ROOT, "public")
 UA = {"User-Agent": "Mozilla/5.0 (content migration)"}
 
-# Trang thuộc nhóm "sản phẩm" (vật tư bán theo quy cách) — là trang con của 2 trang này
+# Trang thuộc nhóm "sản phẩm" (vật tư bán theo quy cách) - là trang con của 2 trang này
 PRODUCT_PARENTS = {"in-tem-nhan-ma-vach", "muc-in-ma-vach"}
 # Trang dịch vụ (menu "Dịch vụ")
 SERVICE_SLUGS = {"dich-vu", "thiet-ke-tem-nhan-bao-bi", "tu-van-chat-lieu-tem-nhan", "gia-cong-in-an-tem-nhan"}
 # Trang thông tin chung
 INFO_SLUGS = {"gioi-thieu-4b-label", "lien-he", "tin-tuc-su-kien", "san-pham-4b-label"}
+# Slug có tên brand cũ -> slug mới trên site mới
+SLUG_RENAME = {"gioi-thieu-4b-label": "gioi-thieu", "san-pham-4b-label": "san-pham"}
 
 
 def get(url):
@@ -120,7 +122,7 @@ def convert(content):
             return f"<h2>{html.escape(a['text'])}</h2>"
         if name == "vc_btn" and a.get("title"):
             link = urllib.parse.unquote(a.get("link", "")).split("url:", 1)[-1].split("|", 1)[0]
-            if not link or "lien-he" in link:  # CTA sidebar — template mới tự có
+            if not link or "lien-he" in link:  # CTA sidebar - template mới tự có
                 return ""
             return f'<p><a class="btn" href="{link}">{html.escape(a["title"])}</a></p>'
         return ""  # vc_row, vc_column, widget, sidebar... bỏ
@@ -138,6 +140,8 @@ def convert(content):
     # link nội bộ -> đường dẫn tương đối, link ảnh -> local
     out = re.sub(r'https?://4blabel\.com\.vn(/wp-content/uploads/[^"\s]+)', lambda m: local_upload_path(m.group(0)), out)
     out = re.sub(r'https?://(?:www\.)?4blabel\.com\.vn(/[^"\s]*)?', lambda m: m.group(1) or "/", out)
+    for old, new in SLUG_RENAME.items():
+        out = out.replace(f"/{old}/", f"/{new}/")
     return tidy(out), images
 
 
@@ -249,6 +253,8 @@ def main():
             kind = "solution"  # in tem nhãn theo ngành + nhóm sản phẩm
         body, imgs = convert(p["content"]["rendered"])
         path = urllib.parse.urlparse(p["link"]).path
+        for old, new in SLUG_RENAME.items():
+            path = path.replace(f"/{old}/", f"/{new}/")
         seo = head_meta(p["link"])
         front = {
             "title": html.unescape(p["title"]["rendered"]),
@@ -261,7 +267,7 @@ def main():
             "cover": next((i["src"] for i in imgs if "Logo" not in i["src"]), ""),
             "updated": p["modified"][:10],
         }
-        write("pages", slug, front, body)
+        write("pages", SLUG_RENAME.get(slug, slug), front, body)
         report[kind] = report.get(kind, 0) + 1
 
     for p in get_all("posts", fields + ",categories"):

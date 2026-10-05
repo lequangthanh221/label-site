@@ -50,7 +50,7 @@ def first_text(html_body, n=160):
 
 
 def fix_description(front, body):
-    """Mô tả SEO tự sinh từ nội dung cũ có thể dính chữ của khối liên hệ — sinh lại."""
+    """Mô tả SEO tự sinh từ nội dung cũ có thể dính chữ của khối liên hệ - sinh lại."""
     m = re.search(r'^description: "(.*)"$', front, re.M)
     if m and any(k.lower() in m.group(1).lower() for k in TAIL_MARKERS + ["LIÊN HỆ", "Liên hệ ngay"]):
         new = first_text(body).replace('"', "'")

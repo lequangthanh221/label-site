@@ -4,7 +4,7 @@ kind: "product"
 path: "/in-tem-nhan-ma-vach/giay-decal-in-tem-ma-vach-100mm-x-150mm/"
 parent: "in-tem-nhan-ma-vach"
 order: 0
-seoTitle: "Giấy decal A6 100mm x 150mm - 4B Label"
+seoTitle: "Giấy decal A6 100mm x 150mm - Temnhanmavach"
 description: "Giấy decal in tem mã vạch 100mm x 150mm Mã hàng : CNTT-100x150x1x50 Chất liệu: Decal giấy in mã vạch cảm nhiệt trực tiếp Đơn vị tính: Cuộn Số lượng tối thiểu:…"
 cover: "/uploads/2020/10/Picture9.webp"
 updated: "2025-11-15"
@@ -17,9 +17,9 @@ updated: "2025-11-15"
 <li><strong>Chất liệu:</strong> Decal giấy in mã vạch cảm nhiệt trực tiếp</li>
 <li><strong>Đơn vị tính:</strong> Cuộn</li>
 <li><strong>Số lượng tối thiểu:</strong> 5 cuộn</li>
-<li><strong>Nhà sản xuất:</strong> 4B Label</li>
+<li><strong>Nhà sản xuất:</strong> {{company}}</li>
 <li><strong>Bảo hành:</strong> 6 tháng</li>
-<li><strong>Mua hàng:</strong> 0971.864.006 hoặc fanpage 4B Labels</li>
+<li><strong>Mua hàng:</strong> {{phone}} hoặc fanpage Temnhanmavach</li>
 </ul>
 <ul>
 <li>Chất liệu decal giấy in mã vạch cảm nhiệt trực tiếp, không cần dùng mực in mã vạch.</li>

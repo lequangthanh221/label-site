@@ -1,12 +1,12 @@
 // ============================================================
-// BRAND — mọi thông tin nhận diện của công ty mới nằm ở đây.
+// BRAND - mọi thông tin nhận diện của công ty mới nằm ở đây.
 // Màu sắc / font nằm ở src/styles/tokens.css.
 // Các giá trị "TODO" là placeholder, cần thay trước khi lên tên miền.
 // ============================================================
 
 export const site = {
-  name: 'TODO Brand',
-  legalName: 'TODO Công ty TNHH …',
+  name: 'Temnhanmavach',
+  legalName: 'Công ty Hoàng Lộc', // TODO: tên pháp nhân đầy đủ (TNHH / Cổ phần …)
   tagline: 'In tem nhãn, decal mã vạch và bao bì theo yêu cầu',
   description:
     'Hỗ trợ từ lên ý tưởng, thiết kế tem nhãn bao bì, chọn vật liệu phù hợp đến in ấn, cắt bế thành phẩm đẹp và chuẩn xác.',
@@ -32,10 +32,10 @@ export type NavItem = { label: string; href: string; children?: NavItem[] };
 
 // Giữ đúng cấu trúc menu của site gốc
 export const nav: NavItem[] = [
-  { label: 'Giới thiệu', href: '/gioi-thieu-4b-label/' },
+  { label: 'Giới thiệu', href: '/gioi-thieu/' },
   {
     label: 'Sản phẩm',
-    href: '/san-pham-4b-label/',
+    href: '/san-pham/',
     children: [
       { label: 'In tem nhãn mã vạch', href: '/in-tem-nhan-ma-vach/' },
       { label: 'In tem nhãn thực phẩm', href: '/in-tem-nhan-thuc-pham/' },

@@ -4,7 +4,7 @@ kind: "product"
 path: "/muc-in-ma-vach/muc-in-ma-vach-wax-premium-80mm-x-300m/"
 parent: "muc-in-ma-vach"
 order: 0
-seoTitle: "Mực in mã vạch Wax Premium 80mm x 300m - 4B Label"
+seoTitle: "Mực in mã vạch Wax Premium 80mm x 300m - Temnhanmavach"
 description: "Kích thước: 80mm x 300m Chất liệu: Polyester Film Độ dày: 4.5 (µm) Màu sắc: Đen Mực in mã vạch Wax Premium 80mm x 300m"
 cover: "/uploads/2020/10/Picture1.webp"
 updated: "2020-10-18"

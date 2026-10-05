@@ -4,7 +4,7 @@ kind: "solution"
 path: "/muc-in-ma-vach/"
 parent: ""
 order: 0
-seoTitle: "Mực in mã vạch - 4B Label"
+seoTitle: "Mực in mã vạch - Temnhanmavach"
 description: "Mực in mã vạch Wax Premium 80mm x 300m Mực in mã vạch Wax/Resin 80mm x 300m Mực in mã vạch Wax Premium 90mm x 300m Mực in mã vạch Wax/Resin 90mm x 300m Mực in…"
 cover: "/uploads/2020/10/Picture1.webp"
 updated: "2020-10-18"

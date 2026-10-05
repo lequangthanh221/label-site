@@ -20,5 +20,5 @@ jobs:
           SITE_URL: ${{ vars.SITE_URL }}
       - uses: actions/upload-artifact@v4
         with:
-          name: dist
-          path: dist
+          name: site
+          path: out

@@ -3,7 +3,7 @@ title: "Tem nhiệt màu"
 path: "/tem-nhiet-mau/"
 date: "2025-11-16"
 updated: "2025-11-16"
-seoTitle: "Tem nhiệt màu - 4B Label"
+seoTitle: "Tem nhiệt màu - Temnhanmavach"
 description: "Tem in nhiệt có màu là loại tem dùng giấy nhiệt nhưng có nền màu xanh, vàng, hồng…, giúp phân…"
 cover: "/uploads/2025/11/13-1.webp"
 ---

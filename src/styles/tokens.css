@@ -1,5 +1,5 @@
 /* ============================================================
-   BRAND TOKENS — bản thử theo tinh thần Consilio, tông xanh dương đậm.
+   BRAND TOKENS - bản thử theo tinh thần Consilio, tông xanh dương đậm.
    Khi có brand guidelines thật: chỉ thay các biến dưới đây.
    ============================================================ */
 :root {
@@ -32,7 +32,7 @@
   --line-dark: rgb(255 255 255 / 0.1);
 
   /* chữ */
-  --font-body: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: var(--font-inter-tight), 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-heading: var(--font-body);
   --text-base: 1.0625rem;
   /* độ đậm theo vai trò */

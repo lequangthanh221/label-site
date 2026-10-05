@@ -1,10 +1,10 @@
 ---
 title: "Sản phẩm"
 kind: "info"
-path: "/san-pham-4b-label/"
+path: "/san-pham/"
 parent: ""
 order: 0
-seoTitle: "Sản phẩm - 4B Label"
+seoTitle: "Sản phẩm - Temnhanmavach"
 description: ""
 cover: ""
 updated: "2020-08-25"

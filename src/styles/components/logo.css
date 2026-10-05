@@ -1,0 +1,3 @@
+/* chuyển từ Logo.astro */
+.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.2rem; letter-spacing: -0.03em; }
+.logo__dot { color: var(--accent); }

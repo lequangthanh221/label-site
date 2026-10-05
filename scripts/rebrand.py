@@ -5,7 +5,7 @@
 2. python3 scripts/rebrand.py          # xem trước số chỗ sẽ đổi
    python3 scripts/rebrand.py --apply  # ghi thật
 
-Không đụng dòng `path:` trong frontmatter (giữ URL cho SEO — đổi slug thì phải thêm redirect).
+Không đụng dòng `path:` trong frontmatter (giữ URL cho SEO - đổi slug thì phải thêm redirect).
 """
 import json
 import os

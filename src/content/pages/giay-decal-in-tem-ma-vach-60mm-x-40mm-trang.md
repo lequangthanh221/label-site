@@ -4,22 +4,22 @@ kind: "product"
 path: "/in-tem-nhan-ma-vach/giay-decal-in-tem-ma-vach-60mm-x-40mm-trang/"
 parent: "in-tem-nhan-ma-vach"
 order: 0
-seoTitle: "Giấy decal in tem mã vạch 60mm x 40mm (trắng) - 4B Label"
+seoTitle: "Giấy decal in tem mã vạch 60mm x 40mm (trắng) - Temnhanmavach"
 description: "Giấy decal in tem mã vạch 60mm x 40mm (trắng) Mã hàng : CNTT-60x40x1x50m Chất liệu: Decal cảm nhiệt trực tiếp, chưa in ấn logo Đơn vị tính: Cuộn Số lượng tối…"
 cover: "/uploads/2020/09/Picture2-e1601107215423.webp"
 updated: "2020-10-16"
 ---
 
-<figure><img alt="in tem mã vạch 60mm x 40mm (trắng) 4B Label" loading="lazy" src="/uploads/2020/09/Picture2-e1601107215423.webp"/></figure>
+<figure><img alt="in tem mã vạch 60mm x 40mm (trắng) Temnhanmavach" loading="lazy" src="/uploads/2020/09/Picture2-e1601107215423.webp"/></figure>
 <p><a name="_Toc52020993"></a><em>Giấy decal in tem mã vạch 60mm x 40mm (trắng)</em></p>
 <ul>
 <li><strong>Mã hàng</strong>: CNTT-60x40x1x50m</li>
 <li><strong>Chất liệu:</strong> Decal cảm nhiệt trực tiếp, chưa in ấn logo</li>
 <li><strong>Đơn vị tính:</strong> Cuộn</li>
 <li><strong>Số lượng tối thiểu:</strong> 5 cuộn</li>
-<li><strong>Nhà sản xuất:</strong> 4B Label</li>
+<li><strong>Nhà sản xuất:</strong> {{company}}</li>
 <li><strong>Bảo hành:</strong> 6 tháng</li>
-<li><strong>Mua hàng:</strong> 0971.864.006 hoặc fanpage 4B Labels</li>
+<li><strong>Mua hàng:</strong> {{phone}} hoặc fanpage Temnhanmavach</li>
 </ul>
 <ul>
 <li>Chất liệu decal giấy in mã vạch cảm nhiệt trực tiếp, không cần dùng mực in mã vạch.</li>

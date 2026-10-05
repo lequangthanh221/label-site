@@ -3,7 +3,7 @@ title: "Làm sao để xác định giấy in mã vạch cảm nhiệt trực ti
 path: "/lam-sao-de-xac-dinh-giay-in-ma-vach-cam-nhiet-truc-tiep/"
 date: "2020-09-13"
 updated: "2020-09-19"
-seoTitle: "Làm sao để xác định giấy in mã vạch cảm nhiệt trực tiếp - 4B Label"
+seoTitle: "Làm sao để xác định giấy in mã vạch cảm nhiệt trực tiếp - Temnhanmavach"
 description: "Giấy in mã vạch cảm nhiệt trực tiếp là gì? Decal giấy in mã vạch cảm nhiệt trực tiếp ngày…"
 cover: "/uploads/2020/09/cam-nhiet-truc-tiep.webp"
 ---

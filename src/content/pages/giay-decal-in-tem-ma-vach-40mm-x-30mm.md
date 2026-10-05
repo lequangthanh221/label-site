@@ -4,8 +4,8 @@ kind: "product"
 path: "/in-tem-nhan-ma-vach/giay-decal-in-tem-ma-vach-40mm-x-30mm/"
 parent: "in-tem-nhan-ma-vach"
 order: 0
-seoTitle: "Giấy decal in tem mã vạch 40mm x 30mm - 4B Label"
-description: "Mã hàng : CNTT-50x30x1x30 Chất liệu: Decal giấy in mã vạch cảm nhiệt trực tiếp Đơn vị tính: Cuộn Số lượng tối thiểu: 5 cuộn Nhà sản xuất: 4B Label Bảo hành: 6…"
+seoTitle: "Giấy decal in tem mã vạch 40mm x 30mm - Temnhanmavach"
+description: "Mã hàng : CNTT-50x30x1x30 Chất liệu: Decal giấy in mã vạch cảm nhiệt trực tiếp Đơn vị tính: Cuộn Số lượng tối thiểu: 5 cuộn Nhà sản xuất: Hoàng Lộc Bảo hành: 6…"
 cover: "/uploads/2020/10/Picture8.webp"
 updated: "2020-10-16"
 ---
@@ -15,9 +15,9 @@ updated: "2020-10-16"
 <li><strong>Chất liệu:</strong> Decal giấy in mã vạch cảm nhiệt trực tiếp</li>
 <li><strong>Đơn vị tính:</strong> Cuộn</li>
 <li><strong>Số lượng tối thiểu:</strong> 5 cuộn</li>
-<li><strong>Nhà sản xuất:</strong> 4B Label</li>
+<li><strong>Nhà sản xuất:</strong> {{company}}</li>
 <li><strong>Bảo hành:</strong> 6 tháng</li>
-<li><strong>Mua hàng:</strong> 0971.864.006 hoặc fanpage 4B Labels</li>
+<li><strong>Mua hàng:</strong> {{phone}} hoặc fanpage Temnhanmavach</li>
 </ul>
 <ul>
 <li>Chất liệu decal giấy in mã vạch cảm nhiệt trực tiếp, không cần dùng mực in mã vạch.</li>

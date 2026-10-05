@@ -4,7 +4,7 @@ kind: "solution"
 path: "/tem-nhan-dac-biet/"
 parent: ""
 order: 0
-seoTitle: "In tem nhãn đặc biệt - 4B Label"
+seoTitle: "In tem nhãn đặc biệt - Temnhanmavach"
 description: "Tem nhãn niêm phong, tem nhãn khăn giấy ướt và các loại tem nhãn cho ứng dụng đặc biệt, yêu cầu chất liệu và keo riêng."
 cover: "/uploads/2020/10/Picture1-1.webp"
 updated: "2020-10-18"

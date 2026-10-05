@@ -4,7 +4,7 @@ kind: "product"
 path: "/in-tem-nhan-ma-vach/giay-decal-in-tem-ma-vach-70mm-x-110mm/"
 parent: "in-tem-nhan-ma-vach"
 order: 0
-seoTitle: "Giấy decal in tem mã vạch 70mm x 110mm - 4B Label"
+seoTitle: "Giấy decal in tem mã vạch 70mm x 110mm - Temnhanmavach"
 description: "Giấy decal in tem mã vạch 70mm x 110mm Mã hàng : DCT-70x110x1x50 Chất liệu: Decal giấy in mã vạch loại thường Đơn vị tính: Cuộn Số lượng tối thiểu: 5 cuộn Nhà…"
 cover: "/uploads/2020/10/Picture12.webp"
 updated: "2020-10-16"
@@ -17,9 +17,9 @@ updated: "2020-10-16"
 <li><strong>Chất liệu:</strong> Decal giấy in mã vạch loại thường</li>
 <li><strong>Đơn vị tính:</strong> Cuộn</li>
 <li><strong>Số lượng tối thiểu:</strong> 5 cuộn</li>
-<li><strong>Nhà sản xuất:</strong> 4B Label</li>
+<li><strong>Nhà sản xuất:</strong> {{company}}</li>
 <li><strong>Bảo hành:</strong> 6 tháng</li>
-<li><strong>Mua hàng:</strong> 0971.864.006 hoặc fanpage 4B Labels</li>
+<li><strong>Mua hàng:</strong> {{phone}} hoặc fanpage Temnhanmavach</li>
 </ul>
 <ul>
 <li>Chất liệu decal giấy in mã vạch phù hợp sử dụng với mực in mã vạch wax, wax/resin.</li>

@@ -3,7 +3,7 @@ title: "Các loại tem nhãn mã vạch thường dùng"
 path: "/cac-loai-tem-nhan-ma-vach-thuong-dung/"
 date: "2020-09-13"
 updated: "2020-09-13"
-seoTitle: "Các loại tem nhãn mã vạch thường dùng - 4B Label"
+seoTitle: "Các loại tem nhãn mã vạch thường dùng - Temnhanmavach"
 description: "Ngày nay, tem nhãn mã vạch được ứng dụng rộng rãi trong nhiều ngành nghề khác nhau. Tem nhãn mã…"
 cover: "/uploads/2020/09/nhua-pvc.webp"
 ---

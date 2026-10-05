@@ -1,0 +1,13 @@
+/* chuyển từ Footer.astro */
+.ft { background: var(--navy-950); color: var(--on-dark-2); font-size: 0.925rem; }
+.ft a { color: inherit; text-decoration: none; transition: color 0.25s; }
+.ft a:hover { color: var(--on-dark); }
+.ft__grid { display: grid; gap: 48px 32px; padding-block: 88px 64px; grid-template-columns: 1.6fr repeat(3, 1fr); }
+.ft__brand { color: var(--on-dark); }
+.ft__brand p { color: var(--on-dark-2); margin: 20px 0 24px; max-width: 36ch; line-height: 1.6; }
+.ft h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--on-dark-3); margin-bottom: 18px; font-weight: 500; }
+.ft ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ft__contact { color: var(--on-dark-2); }
+.ft__bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 24px; border-top: 1px solid var(--line-dark); color: var(--on-dark-3); font-size: 0.85rem; }
+@media (max-width: 900px) { .ft__grid { grid-template-columns: 1fr 1fr; } .ft__brand { grid-column: 1 / -1; } }
+@media (max-width: 520px) { .ft__grid { grid-template-columns: 1fr; } }
