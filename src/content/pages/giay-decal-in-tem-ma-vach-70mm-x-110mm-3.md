@@ -34,18 +34,3 @@ updated: "2020-10-16"
 <li>Mỗi cuộn có 440 nhãn</li>
 <li>Có răng cưa mỗi hàng nhãn, mỗi hàng 1 tem</li>
 </ul>
-<h2><strong>Để được tư vấn trực tiếp<br/>
-</strong></h2>
-<h4>Quý khách hàng, đối tác vui lòng liên hệ</h4>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong></p>
-<p><strong><br/>
-Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>

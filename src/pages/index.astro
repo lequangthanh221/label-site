@@ -2,8 +2,10 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Button from '../components/Button.astro';
+import Stats from '../components/Stats.astro';
+import { emph } from '../lib/emph';
 import { site } from '../config/site';
-import { hero, materials, industries, about, stats, values, process, commitments, faqs, cta } from '../config/home';
+import { hero, materials, industries, about, values, process, commitments, faqs, cta } from '../config/home';
 
 const pages = await getCollection('pages');
 const posts = (await getCollection('posts')).sort((a, b) => b.data.date.localeCompare(a.data.date));
@@ -29,7 +31,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
     <canvas class="hero__waves" data-waves aria-hidden="true"></canvas>
     <div class="container hero__inner">
       <h1 class="h-display hero__title" data-reveal="words">
-        {hero.title[0]}{' '}<br />{hero.title[1]} <span class="accent-text">{hero.accent}</span>
+        {hero.title[0]}{' '}<br />{hero.title[1]} <em class="hl">{hero.accent}</em>
       </h1>
       <div class="hero__bottom">
         <div class="hero__left">
@@ -63,26 +65,18 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
       <div class="about__top">
         <div>
           <span class="tag" data-reveal>{about.tag}</span>
-          <h2 class="h-section" data-reveal="words">{about.title}</h2>
+          <h2 class="h-section" data-reveal="words" set:html={emph(about.title)} />
         </div>
         <div class="about__right">
           <p class="lead muted" data-reveal data-delay="200">{about.body}</p>
           <div data-reveal data-delay="300"><Button href="/gioi-thieu-4b-label/" variant="dark">Câu chuyện của chúng tôi</Button></div>
         </div>
       </div>
-      <div class="about__grid">
-        <div class="about__img" data-reveal><img src={about.image} alt="Các cuộn tem nhãn thành phẩm" loading="lazy" /></div>
-        <ul class="stats">
-          {stats.map((s, i) => (
-            <li data-reveal data-delay={String(i * 120)}>
-              <strong><span data-count={s.value}>0</span>{s.suffix}</strong>
-              <span>{s.label}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <div class="about__img" data-reveal><img src={about.image} alt="Các cuộn tem nhãn thành phẩm" loading="lazy" /></div>
     </div>
   </section>
+
+  <Stats />
 
   <!-- ============ TEM NHÃN THEO NGÀNH (carousel) ============ -->
   <section class="section solutions" data-carousel>
@@ -90,7 +84,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
       <div class="sec-head">
         <div>
           <span class="tag" data-reveal>Sản phẩm</span>
-          <h2 class="h-section" data-reveal="words">Tem nhãn cho từng<br />ngành hàng</h2>
+          <h2 class="h-section" data-reveal="words" set:html={emph('Tem nhãn cho từng\n[[ngành hàng]]')} />
         </div>
         <div class="arrows" data-reveal>
           <button data-prev aria-label="Trước"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3 5 8l5 5"/></svg></button>
@@ -103,7 +97,6 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
         <a class="scard" href={p.data.path} data-reveal data-delay={String(Math.min(i, 4) * 90)}>
           <img src={p.data.cover} alt="" loading="lazy" />
           <div class="scard__body">
-            <span class="scard__num">{String(i + 1).padStart(2, '0')}</span>
             <h3>{p.data.title}</h3>
             <p>{p.data.description}</p>
           </div>
@@ -121,7 +114,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
     <div class="container">
       <div class="center-head">
         <span class="tag" data-reveal>{values.tag}</span>
-        <h2 class="h-section" data-reveal="words">{values.title}</h2>
+        <h2 class="h-section" data-reveal="words" set:html={emph(values.title)} />
         <p class="lead muted" data-reveal data-delay="200">{values.lead}</p>
       </div>
       <div class="values__grid">
@@ -137,34 +130,36 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
     </div>
   </section>
 
-  <!-- ============ QUY TRÌNH (mục lục dính) ============ -->
-  <section class="section process" data-steps>
+  <!-- ============ QUY TRÌNH (accordion ngang) ============ -->
+  <section class="section process">
     <div class="container">
       <div class="sec-head">
         <div>
           <span class="tag" data-reveal>{process.tag}</span>
-          <h2 class="h-section" data-reveal="words">{process.title}</h2>
+          <h2 class="h-section" data-reveal="words" set:html={emph(process.title)} />
         </div>
-        <p class="muted process__lead" data-reveal data-delay="200">{process.lead}</p>
+        <p class="lead muted process__lead" data-reveal data-delay="200">{process.lead}</p>
       </div>
-      <div class="process__body">
-        <nav class="process__nav" aria-label="Các bước">
-          <ol>
-            {process.steps.map((s, i) => <li><a href={`#${s.id}`} data-step-link class={i === 0 ? 'is-active' : ''}>{s.label}</a></li>)}
-          </ol>
-        </nav>
-        <div class="process__steps">
-          {process.steps.map((s, i) => (
-            <article id={s.id} class="step" data-step>
-              <div class="step__img" data-reveal><img src={s.image} alt="" loading="lazy" /></div>
-              <div class="step__text" data-reveal data-delay="120">
-                <span class="step__num">Bước {i + 1}</span>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
+      <div class="acc" data-accordion="single" data-reveal>
+        {process.steps.map((s, i) => (
+          <article class:list={['acc__item', i === 0 && 'is-open']} data-acc-item>
+            <img class="acc__img" src={s.image} alt="" loading="lazy" />
+            <button class="acc__btn" data-acc-btn aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`step-${s.id}`} id={`step-btn-${s.id}`}>
+              <span class="acc__no">Bước {i + 1}<span class="acc__of">/{process.steps.length}</span></span>
+              <span class="acc__label">{s.label}</span>
+              <span class="acc__plus" aria-hidden="true"></span>
+            </button>
+            <div class="acc__panel" id={`step-${s.id}`} role="region" aria-labelledby={`step-btn-${s.id}`}>
+              <div class="acc__inner">
+                <img class="acc__img--m" src={s.image} alt="" loading="lazy" />
+                <div class="acc__text">
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
               </div>
-            </article>
-          ))}
-        </div>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -182,7 +177,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
     </div>
     <div class="container center-head commit__head">
       <span class="tag" data-reveal>{commitments.tag}</span>
-      <h2 class="h-section" data-reveal="words">{commitments.title}</h2>
+      <h2 class="h-section" data-reveal="words" set:html={emph(commitments.title)} />
       <p class="lead muted" data-reveal data-delay="200">{commitments.lead}</p>
       <div data-reveal data-delay="300"><Button href="/lien-he/">Bắt đầu dự án tem nhãn</Button></div>
     </div>
@@ -197,7 +192,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
     <div class="container">
       <div class="center-head">
         <span class="tag" data-reveal>Vật tư in mã vạch</span>
-        <h2 class="h-section" data-reveal="words">Đủ quy cách cho máy in mã vạch</h2>
+        <h2 class="h-section" data-reveal="words" set:html={emph('Đủ quy cách cho [[máy in mã vạch]]')} />
       </div>
       <div class="supplies__grid">
         <a class="sup" href="/in-tem-nhan-ma-vach/" data-reveal>
@@ -222,7 +217,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
       <div class="sec-head">
         <div>
           <span class="tag" data-reveal>Kiến thức</span>
-          <h2 class="h-section" data-reveal="words">Tin tức &amp; kinh nghiệm<br />tem nhãn</h2>
+          <h2 class="h-section" data-reveal="words" set:html={emph('Tin tức & kinh nghiệm\n[[tem nhãn]]')} />
         </div>
         <div data-reveal><Button href="/tin-tuc-su-kien/">Xem tất cả bài viết</Button></div>
       </div>
@@ -243,19 +238,26 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
     <div class="container faq__grid">
       <div class="faq__left">
         <span class="tag" data-reveal>Hỏi đáp</span>
-        <h2 class="h-section" data-reveal="words">Câu hỏi thường gặp</h2>
+        <h2 class="h-section" data-reveal="words" set:html={emph('Câu hỏi [[thường gặp]]')} />
         <div class="faq__help" data-reveal data-delay="200">
           <strong>Cần tư vấn chất liệu?</strong>
           <p class="muted">Gọi <a href={site.contact.phoneHref}>{site.contact.phone}</a> hoặc gửi yêu cầu, chúng tôi phản hồi sớm nhất.</p>
           <Button href="/lien-he/" variant="dark">Liên hệ</Button>
         </div>
       </div>
-      <div class="faq__list">
+      <div class="faq__list" data-accordion="toggle">
         {faqs.map((f, i) => (
-          <details class="qa" data-reveal data-delay={String(i * 80)} open={i === 0}>
-            <summary>{f.q}<span class="qa__plus" aria-hidden="true"></span></summary>
-            <div class="qa__a"><p>{f.a}</p></div>
-          </details>
+          <div class:list={['qa', i === 0 && 'is-open']} data-acc-item data-reveal data-delay={String(i * 80)}>
+            <h3 class="qa__h">
+              <button class="qa__btn" data-acc-btn aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`faq-${i}`} id={`faq-btn-${i}`}>
+                <span class="qa__q">{f.q}</span>
+                <span class="qa__plus" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="qa__panel" id={`faq-${i}`} role="region" aria-labelledby={`faq-btn-${i}`}>
+              <div class="qa__inner"><p>{f.a}</p></div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -267,7 +269,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
       <div class="cta">
         <img src={cta.image} alt="" loading="lazy" class="cta__bg" />
         <div class="cta__inner">
-          <h2 class="h-section" data-reveal="words">{cta.title}</h2>
+          <h2 class="h-section" data-reveal="words" set:html={emph(cta.title)} />
           <p class="lead" data-reveal data-delay="200">{cta.lead}</p>
           <div data-reveal data-delay="300"><Button href="/lien-he/">Nhận báo giá</Button></div>
         </div>
@@ -318,15 +320,9 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
   .about { background: var(--white); }
   .about__top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: end; }
   .about__right { display: grid; gap: 28px; justify-items: start; }
-  .about__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; margin-top: 72px; align-items: stretch; }
-  .about__img { overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 4 / 3; }
-  .about__img img { width: 100%; height: 100%; object-fit: cover; }
-  .stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
-  .stats li { padding: 32px 0; border-bottom: 1px solid var(--line); display: grid; align-content: space-between; gap: 12px; }
-  .stats li:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--line); }
-  .stats li:nth-child(even) { padding-left: 28px; }
-  .stats strong { font-size: clamp(2.75rem, 5vw, 4.25rem); font-weight: 400; letter-spacing: -0.05em; line-height: 1; color: var(--ink); }
-  .stats span:last-child { color: var(--ink-3); }
+  .about__img { margin-top: clamp(56px, 7vw, 88px); overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 21 / 9; }
+  .about__img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.6s var(--ease-out); }
+  .about__img.is-in img { transform: scale(1); }
 
   /* ---------- carousel ngành ---------- */
   .arrows { display: flex; gap: 8px; }
@@ -340,8 +336,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
   .scard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgb(4 11 24 / 0.92) 100%); transition: opacity 0.5s; }
   .scard:hover img { transform: scale(1.08); }
   .scard__body { position: absolute; inset: auto 0 0; z-index: 1; padding: 24px; }
-  .scard__num { font-size: 0.8rem; color: var(--accent); }
-  .scard h3 { font-size: 1.45rem; margin-top: 8px; }
+  .scard h3 { font-size: 1.5rem; line-height: 1.15; }
   .scard p { margin-top: 8px; font-size: 0.9rem; color: var(--on-dark-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.6s var(--ease-out), opacity 0.4s; }
   .scard:hover p, .scard:focus-visible p { max-height: 3.2em; opacity: 1; }
   .solutions { background: var(--paper); }
@@ -360,24 +355,34 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
   .vcard h3 { font-size: 1.35rem; margin-top: 40px; }
   .vcard p { color: var(--on-dark-2); font-size: 0.95rem; }
 
-  /* ---------- quy trình ---------- */
+  /* ---------- quy trình: accordion ngang ---------- */
   .process { background: var(--white); }
   .process__lead { max-width: 44ch; }
-  .process__body { display: grid; grid-template-columns: 240px 1fr; gap: 64px; }
-  .process__nav { position: sticky; top: 120px; align-self: start; }
-  .process__nav ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .process__nav a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-size: 1.15rem; color: var(--ink-3); opacity: 0.55; transition: opacity 0.4s, color 0.4s; }
-  .process__nav a::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; transition: background 0.4s, transform 0.4s; }
-  .process__nav a.is-active { color: var(--ink); opacity: 1; }
-  .process__nav a.is-active::before { background: var(--accent-strong); transform: scale(1.4); }
-  .process__steps { display: grid; gap: 96px; }
-  .step { display: grid; gap: 28px; scroll-margin-top: 120px; }
-  .step__img { overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 16 / 9; background: var(--paper); }
-  .step__img img { width: 100%; height: 100%; object-fit: cover; }
-  .step__text { display: grid; grid-template-columns: 200px 1fr; gap: 8px 32px; }
-  .step__num { font-size: 0.85rem; color: var(--accent-strong); grid-row: span 2; padding-top: 6px; }
-  .step h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
-  .step p { color: var(--ink-2); max-width: 56ch; }
+  .acc { display: flex; gap: 12px; height: clamp(520px, 62vh, 640px); }
+  .acc__item { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--radius-card); background: var(--navy-950); color: var(--on-dark); transition: flex-grow 0.9s var(--ease-out); }
+  .acc__item.is-open { flex-grow: 4.2; }
+  .acc__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; filter: saturate(0.4); transform: scale(1.12); transition: opacity 0.9s var(--ease-out), filter 0.9s, transform 1.4s var(--ease-out); }
+  .acc__item:hover .acc__img { opacity: 0.5; }
+  .acc__item.is-open .acc__img { opacity: 1; filter: none; transform: scale(1); }
+  .acc__item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(4 11 24 / 0.55) 0%, transparent 30%, transparent 45%, rgb(4 11 24 / 0.92) 100%); pointer-events: none; }
+  .acc__btn { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 24px; background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+  .acc__item.is-open .acc__btn { bottom: auto; flex-direction: row; align-items: center; gap: 16px; cursor: default; }
+  .acc__no { font-size: 0.875rem; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; }
+  .acc__of { color: var(--on-dark-3); font-weight: 500; }
+  .acc__label { font-size: clamp(1.4rem, 2vw, 1.9rem); font-weight: 600; letter-spacing: -0.03em; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+  .acc__item.is-open .acc__label { writing-mode: horizontal-tb; transform: none; font-size: 1rem; font-weight: 500; color: var(--on-dark-2); }
+  .acc__plus { position: relative; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgb(255 255 255 / 0.3); flex: none; transition: background 0.3s, border-color 0.3s; }
+  .acc__plus::before, .acc__plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; background: currentColor; transform: translate(-50%, -50%); }
+  .acc__plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .acc__btn:hover .acc__plus { background: var(--accent); border-color: var(--accent); color: var(--navy-950); }
+  .acc__item.is-open .acc__plus { display: none; }
+  .acc__panel { position: absolute; inset: auto 0 0; z-index: 1; }
+  .acc__img--m { display: none; }
+  .acc__text { padding: clamp(24px, 3vw, 40px); max-width: 640px; opacity: 0; transform: translateY(24px); filter: blur(8px); transition: opacity 0.5s, transform 0.5s, filter 0.5s; }
+  .acc__item.is-open .acc__text { opacity: 1; transform: none; filter: none; transition: opacity 0.8s var(--ease-out) 0.35s, transform 0.8s var(--ease-out) 0.35s, filter 0.8s var(--ease-out) 0.35s; }
+  .acc__text h3 { font-size: clamp(1.75rem, 2.8vw, 2.6rem); line-height: 1.08; }
+  .acc__text p { margin-top: 14px; color: var(--on-dark-2); font-size: 1.05rem; max-width: 52ch; }
+  .acc__item:not(.is-open) .acc__panel { visibility: hidden; transition: visibility 0s 0.5s; }
 
   /* ---------- cam kết ---------- */
   .commit { position: relative; background: var(--paper); overflow: hidden; min-height: 820px; display: grid; align-content: center; }
@@ -423,17 +428,23 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
   .faq__help strong { font-weight: 500; font-size: 1.1rem; }
   .faq__help a { color: var(--accent-strong); }
   .faq__list { display: grid; gap: 12px; }
-  .qa { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-card); transition: border-color 0.3s; }
-  .qa[open] { border-color: rgb(47 134 246 / 0.4); }
-  .qa summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 24px; cursor: pointer; list-style: none; font-size: 1.1rem; letter-spacing: -0.01em; }
-  .qa summary::-webkit-details-marker { display: none; }
-  .qa__plus { position: relative; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--navy-900); }
-  .qa__plus::before, .qa__plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: var(--accent); transform: translate(-50%, -50%); transition: transform 0.4s var(--ease-out); }
+  .qa { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-card); transition: background 0.5s var(--ease-out), border-color 0.5s, color 0.5s; }
+  .qa:hover { border-color: rgb(47 134 246 / 0.45); }
+  .qa.is-open { background: var(--navy-900); border-color: var(--navy-900); color: var(--on-dark); }
+  .qa__h { font-size: inherit; margin: 0; }
+  .qa__btn { width: 100%; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding: 24px 24px 24px 28px; background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+  .qa__q { font-size: clamp(1.1rem, 1.5vw, 1.3rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; }
+  .qa__plus { position: relative; width: 40px; height: 40px; border-radius: 50%; background: var(--paper); transition: background 0.4s, transform 0.6s var(--ease-out); }
+  .qa__plus::before, .qa__plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; background: var(--ink); transform: translate(-50%, -50%); transition: transform 0.5s var(--ease-out), background 0.4s; }
   .qa__plus::after { transform: translate(-50%, -50%) rotate(90deg); }
-  .qa[open] .qa__plus::after { transform: translate(-50%, -50%) rotate(0deg); }
-  .qa__a { padding: 0 24px 24px; color: var(--ink-2); }
-  .qa[open] .qa__a { animation: qa-in 0.5s var(--ease-out); }
-  @keyframes qa-in { from { opacity: 0; transform: translateY(-6px); } }
+  .qa__btn:hover .qa__plus { background: var(--accent-soft); }
+  .qa.is-open .qa__plus { background: var(--accent); transform: rotate(180deg); }
+  .qa.is-open .qa__plus::before, .qa.is-open .qa__plus::after { background: var(--navy-950); }
+  .qa.is-open .qa__plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+  .qa__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.6s var(--ease-out); }
+  .qa.is-open .qa__panel { grid-template-rows: 1fr; }
+  .qa__inner { overflow: hidden; }
+  .qa__inner p { padding: 0 88px 28px 28px; color: var(--on-dark-2); line-height: 1.7; max-width: 70ch; }
 
   /* ---------- CTA ---------- */
   .cta-wrap { background: var(--paper); padding-bottom: var(--section); }
@@ -454,9 +465,21 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
     .values__grid { grid-template-columns: 1fr 1fr; }
     .values__img { grid-column: 1 / -1; grid-row: 1; min-height: 320px; }
     .vcard--0, .vcard--1, .vcard--2, .vcard--3 { grid-column: auto; grid-row: auto; }
-    .process__body { grid-template-columns: 1fr; }
-    .process__nav { display: none; }
-    .step__text { grid-template-columns: 1fr; }
+    .acc { flex-direction: column; height: auto; gap: 10px; }
+    .acc__item, .acc__item.is-open { flex: none; }
+    .acc__img, .acc__item::after { display: none; }
+    .acc__item { background: var(--navy-900); }
+    .acc__btn, .acc__item.is-open .acc__btn { position: relative; inset: auto; flex-direction: row; align-items: center; gap: 14px; padding: 20px; cursor: pointer; }
+    .acc__label, .acc__item.is-open .acc__label { writing-mode: horizontal-tb; transform: none; font-size: 1.2rem; font-weight: 600; color: var(--on-dark); margin-right: auto; }
+    .acc__plus, .acc__item.is-open .acc__plus { display: block; }
+    .acc__item.is-open .acc__plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+    .acc__panel { position: static; display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.6s var(--ease-out); }
+    .acc__item.is-open .acc__panel { grid-template-rows: 1fr; }
+    .acc__item:not(.is-open) .acc__panel { visibility: visible; }
+    .acc__inner { overflow: hidden; }
+    .acc__img--m { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .acc__text { opacity: 1; transform: none; filter: none; padding: 20px; }
+    .qa__inner p { padding: 0 24px 24px 28px; }
     .commit { min-height: 0; }
     .commit__float { display: none; }
     .commit__list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; list-style: none; margin-top: 56px; }
@@ -468,8 +491,6 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('vi-VN', { day: 'n
   }
   @media (max-width: 640px) {
     .values__grid, .supplies__grid, .blog__grid, .commit__list { grid-template-columns: 1fr; }
-    .stats li:nth-child(odd) { padding-right: 16px; }
-    .stats li:nth-child(even) { padding-left: 16px; }
     .vcard h3 { margin-top: 24px; }
   }
 </style>

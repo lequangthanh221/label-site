@@ -25,6 +25,7 @@ Cần Python 3 + `pip3 install --user beautifulsoup4 html5lib pillow`.
 rm -rf src/content public/uploads
 python3 scripts/extract.py          # REST API -> Markdown + tải ảnh gốc
 python3 scripts/optimize_images.py  # resize 1600px + WebP, cập nhật đường dẫn
+python3 scripts/clean_content.py    # bỏ khối liên hệ 4B lặp ở cuối mỗi trang
 ```
 
 Sản phẩm WooCommerce (80) và portfolio (34) trên site gốc là dữ liệu demo của theme nên không lấy.

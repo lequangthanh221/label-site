@@ -94,7 +94,3 @@ updated: "2020-10-16"
 <a href="/in-tem-nhan-ma-vach/giay-decal-in-tem-ma-vach-70-mm-x-110mm-4/" title="Thiết kế tem nhãn, bao bì"><img alt="Giấy decal in tem mã vạch 70mm x 110mm" decoding="async" src="/uploads/2020/10/Picture12.webp"/></a>
 </p>
 <h3><a href="/in-tem-nhan-ma-vach/giay-decal-in-tem-ma-vach-70-mm-x-110mm-4/" title="Thiết kế tem nhãn, bao bì">Giấy decal in tem mã vạch 70mm x 110mm</a></h3>
-<figure><img alt="4B Label logo light" loading="lazy" src="/uploads/2020/08/Logo-light.webp"/></figure>
-<p>Bạn đang tìm sản phẩm tem nhãn tốt nhất?</p>
-<p>Liên hệ ngay với chúng tôi</p>
-<p><a class="readon" href="/lien-he/">LIÊN HỆ</a></p>

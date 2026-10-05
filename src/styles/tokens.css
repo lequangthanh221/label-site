@@ -34,10 +34,14 @@
   /* chữ */
   --font-body: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-heading: var(--font-body);
-  --text-base: 1rem;
+  --text-base: 1.0625rem;
+  /* độ đậm theo vai trò */
+  --w-display: 600;
+  --w-heading: 600;
+  --w-label: 500;
   --leading: 1.6;
-  --track-display: -0.055em;
-  --track-heading: -0.035em;
+  --track-display: -0.04em;
+  --track-heading: -0.032em;
 
   /* nhịp và bo góc */
   --radius: 2px;

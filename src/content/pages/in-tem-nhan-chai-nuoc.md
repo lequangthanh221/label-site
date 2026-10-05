@@ -22,18 +22,3 @@ updated: "2025-11-15"
 <h3><strong>Nhãn “clear on clear”</strong></h3>
 <p>Đối với sản phẩm nước tinh khiết nên dùng <strong>nhãn “clear on clear”</strong> được làm từ nhựa PET cả hai mặt (bề mặt decal và mặt đế decal) giúp nhãn “trong vắt” tệp vào chai nhựa hoặc chai thủy tinh hoàn toàn.</p>
 <p><strong>Nhãn “clear on clear”</strong> có thể kết hợp với kỹ thuật in 2 mặt, in lên mặt keo. Khi dán lên chai, công nghệ in 2 mặt mang lại hiệu ứng hiển thị hình ảnh 3D nổi bật. Chai nước sử dụng nhãn “clear on clear” sẽ nhìn sang trọng hơn hẳn với việc dùng nhãn màng co.</p>
-<h2><strong>Để được tư vấn trực tiếp<br/>
-</strong></h2>
-<h4>Quý khách hàng, đối tác vui lòng liên hệ</h4>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong></p>
-<p><strong><br/>
-Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>

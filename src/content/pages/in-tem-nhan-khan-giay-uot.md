@@ -45,23 +45,3 @@ updated: "2020-10-18"
 <p>Hiện tại, giải pháp của chúng tôi được nhiều nhãn hàng hài lòng và sử dụng.</p>
 <div class="gallery"><img alt="In tem nhãn khăn giấy ướt 4B Label" loading="lazy" src="/uploads/2020/10/Picture5.webp"/><img alt="In tem nhãn khăn giấy ướt 4B Label" loading="lazy" src="/uploads/2020/10/Picture2.webp"/></div>
 <p><em>In tem nhãn khăn giấy ướt tại 4B Label</em></p>
-<h2><strong>Để được tư vấn trực tiếp<br/>
-</strong></h2>
-<h4>Xin đừng ngần ngại, quý khách hàng hãy liên hệ với chúng tôi:</h4>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong></p>
-<p><strong><br/>
-Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<figure><img alt="4B Label logo light" loading="lazy" src="/uploads/2020/08/Logo-light.webp"/></figure>
-<p>Nếu bạn đang tìm kiếm loại tem nhãn để định hình thương hiệu của bạn</p>
-<p><strong><br/>
-HÃY LIÊN HỆ VỚI CHÚNG TÔI!</strong></p>
-<p><a class="readon" href="/lien-he/">LIÊN HỆ</a></p>

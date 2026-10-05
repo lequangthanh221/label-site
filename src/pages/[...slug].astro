@@ -5,14 +5,15 @@ import Base from '../layouts/Base.astro';
 import Card from '../components/Card.astro';
 import ContactBlock from '../components/ContactBlock.astro';
 import { site } from '../config/site';
-import Button from '../components/Button.astro';
+import CtaBand from '../components/CtaBand.astro';
 
 type Entry = CollectionEntry<'pages'> | CollectionEntry<'posts'>;
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
   const posts = await getCollection('posts');
-  return [...pages, ...posts].map((entry) => ({
+  // Giới thiệu có trang riêng (gioi-thieu-4b-label.astro)
+  return [...pages.filter((p) => p.id !== 'gioi-thieu-4b-label'), ...posts].map((entry) => ({
     params: { slug: entry.data.path.replace(/^\/|\/$/g, '') },
     props: { entry },
   }));
@@ -112,17 +113,7 @@ if (isPost) {
     )}
   </div></div>
 
-  {!isContact && (
-    <section class="cta-band">
-      <div class="container cta-band__inner">
-        <div>
-          <h2 data-reveal="words">Cần tư vấn tem nhãn cho sản phẩm của bạn?</h2>
-          <p data-reveal data-delay="200">Gọi {site.contact.phone} hoặc gửi yêu cầu, chúng tôi phản hồi trong ngày.</p>
-        </div>
-        <div data-reveal data-delay="300"><Button href="/lien-he/">Liên hệ ngay</Button></div>
-      </div>
-    </section>
-  )}
+  {!isContact && <CtaBand />}
 </Base>
 
 <style>
@@ -130,13 +121,10 @@ if (isPost) {
   .crumbs { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.875rem; margin-bottom: 20px; color: var(--on-dark-3); }
   .crumbs a { color: var(--on-dark-2); text-decoration: none; }
   .crumbs a:hover { color: var(--accent); }
-  .page-title { font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: var(--track-display); line-height: 1.02; max-width: 18ch; }
+  .page-title { font-size: clamp(2.5rem, 5.6vw, 4.75rem); font-weight: var(--w-display); letter-spacing: var(--track-display); line-height: 1.02; max-width: 18ch; }
   .page-meta { margin-top: 24px; color: var(--on-dark-2); max-width: 60ch; }
   .page-body { background: var(--white); padding-block: var(--section); }
   .listing { margin-top: 72px; }
-  .listing h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 32px; }
-  .cta-band { background: var(--navy-900); color: var(--on-dark); padding-block: clamp(56px, 8vw, 96px); }
-  .cta-band__inner { display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
-  .cta-band h2 { font-size: clamp(1.75rem, 3.2vw, 2.75rem); max-width: 20ch; }
-  .cta-band p { margin-top: 12px; color: var(--on-dark-2); }
+  .listing { padding-top: 56px; border-top: 1px solid var(--line); }
+  .listing h2 { font-size: clamp(1.9rem, 3.2vw, 2.75rem); margin-bottom: 40px; }
 </style>

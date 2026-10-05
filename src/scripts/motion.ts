@@ -145,3 +145,22 @@ document.querySelectorAll<HTMLCanvasElement>('canvas[data-waves]').forEach((canv
   }).observe(canvas);
   loop();
 });
+
+// ---------- accordion ----------
+// [data-accordion="single"]  luôn mở đúng 1 mục (khối Quy trình)
+// [data-accordion="toggle"]  mở 1 mục, bấm lại để đóng (Hỏi đáp)
+document.querySelectorAll<HTMLElement>('[data-accordion]').forEach((root) => {
+  const mode = root.dataset.accordion;
+  const items = [...root.querySelectorAll<HTMLElement>('[data-acc-item]')];
+  const set = (item: HTMLElement, open: boolean) => {
+    item.classList.toggle('is-open', open);
+    item.querySelector('[data-acc-btn]')!.setAttribute('aria-expanded', String(open));
+  };
+  items.forEach((item) => {
+    item.querySelector('[data-acc-btn]')!.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      if (isOpen && mode === 'single') return;
+      items.forEach((other) => set(other, other === item ? !isOpen : false));
+    });
+  });
+});

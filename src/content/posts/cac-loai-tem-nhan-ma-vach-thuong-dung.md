@@ -21,10 +21,3 @@ cover: "/uploads/2020/09/nhua-pvc.webp"
 <p>Đây là loại có chất lượng tốt vượt trội. Ưu điểm bền chắc, không thấm nước, chịu được nhiệt độ cao như ngoài trời hay nhiệt độ cực thấp dùng cho các ngành hàng đông lạnh. Nhược điểm lớn nhất của dòng sản phẩm này là giá thành cao. Để in được mã vạch, thì loại tem nhãn mã vạch nhựa PVC này phải dùng mực in mã vạch chuyên dụng (Resin).</p>
 <p>Kích thước tem nhãn thì chúng tôi sản xuất theo nhu cầu của khách hàng. Các loại giấy in mã vạch thường được bế thành cuộn để dễ dàng sử dụng cho máy in mã vạch.</p>
 <p>Một số thương hiệu nổi tiếng về các loại decal giấy in mã vạch là Avery Dennison, UPM, Lintec,..</p>
-<blockquote>
-<p>Vui lòng liên hệ với chúng tôi để được tư vấn trực tiếp và hướng dẫn mua hàng:</p>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213       </p>
-<p><strong>Email:</strong> info@4blabel.com.vn       </p>
-<p><strong>Facebook:</strong> 4B Labels</p>
-</blockquote>

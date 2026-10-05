@@ -14,9 +14,13 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
-h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; line-height: 1.08; letter-spacing: var(--track-heading); margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--w-heading); line-height: 1.08; letter-spacing: var(--track-heading); margin: 0; text-wrap: balance; }
 p { margin: 0; }
 ::selection { background: var(--accent); color: var(--navy-950); }
+html { scrollbar-color: var(--navy-700) var(--paper); }
+:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; border-radius: 2px; }
+.dark :focus-visible, .hero :focus-visible { outline-color: var(--accent); }
+a { text-underline-offset: 0.2em; }
 
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: var(--section); }
@@ -25,16 +29,19 @@ p { margin: 0; }
 .dark .muted { color: var(--on-dark-2); }
 
 /* tiêu đề khối: chấm + nhãn nhỏ */
-.tag { display: inline-flex; align-items: center; gap: 10px; font-size: 0.875rem; letter-spacing: 0.01em; color: var(--ink-2); }
+.tag { display: inline-flex; align-items: center; gap: 10px; font-size: 0.875rem; font-weight: var(--w-label); letter-spacing: 0.01em; color: var(--ink-2); }
 .tag::before { content: ''; width: 6px; height: 6px; background: var(--accent-strong); border-radius: 50%; }
 .dark .tag { color: var(--on-dark-2); }
 .dark .tag::before { background: var(--accent); }
 
-.h-display { font-size: clamp(2.75rem, 7.2vw, 6.25rem); letter-spacing: var(--track-display); line-height: 1; }
-.h-section { font-size: clamp(2rem, 4.2vw, 3.5rem); letter-spacing: var(--track-heading); line-height: 1.05; }
+.h-display { font-size: clamp(2.75rem, 7vw, 6rem); font-weight: var(--w-display); letter-spacing: var(--track-display); line-height: 1; }
+.h-section { font-size: clamp(2.1rem, 4.4vw, 3.75rem); font-weight: var(--w-heading); letter-spacing: var(--track-heading); line-height: 1.04; }
+/* từ nhấn trong tiêu đề: viết [[từ]] trong config */
+.hl { font-style: normal; color: var(--accent-strong); }
+.dark .hl, .hero .hl, .on-dark .hl { color: var(--accent); }
 .accent-text { color: var(--accent); }
 .light .accent-text, .accent-text--deep { color: var(--accent-strong); }
-.lead { font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 1.55; }
+.lead { font-size: clamp(1.1rem, 1.4vw, 1.25rem); line-height: 1.55; max-width: 60ch; }
 
 /* nút 2 phần: chữ + ô mũi tên */
 .btn {
@@ -44,7 +51,7 @@ p { margin: 0; }
   height: 52px; padding: 5px 5px 5px 28px;
   background: var(--btn-bg); color: var(--btn-fg);
   border: 0; border-radius: var(--radius);
-  font: 500 0.975rem/1 var(--font-body); text-decoration: none; cursor: pointer;
+  font: 600 0.975rem/1 var(--font-body); text-decoration: none; cursor: pointer;
   transition: background 0.3s var(--ease-out);
 }
 .btn__arrow {
@@ -63,7 +70,7 @@ p { margin: 0; }
 .btn--dark .btn__arrow { background: var(--accent); color: var(--navy-950); }
 .btn--dark:hover { --btn-bg: var(--navy-700); }
 
-.link-arrow { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 
 /* ===== chuyển động: hiện dần từ mờ (blur) ===== */
 [data-reveal] { opacity: 0; filter: blur(14px); transform: translateY(24px); transition: opacity var(--dur) var(--ease-out), filter var(--dur) var(--ease-out), transform var(--dur) var(--ease-out); transition-delay: calc(var(--d, 0) * 1ms); }
@@ -80,11 +87,17 @@ p { margin: 0; }
 }
 
 /* ===== nội dung trang con (HTML lấy từ site gốc) ===== */
-.prose { max-width: 800px; font-size: 1.0625rem; color: var(--ink-2); }
+.prose { max-width: 72ch; font-size: 1.0625rem; line-height: 1.7; color: var(--ink-2); }
 .prose > * + * { margin-top: 1.1em; }
-.prose h2, .prose h3 { color: var(--ink); margin-top: 2em; font-size: clamp(1.5rem, 2.4vw, 2rem); }
-.prose h4 { color: var(--ink); margin-top: 1.6em; font-size: 1.25rem; }
+.prose h2 { color: var(--ink); margin-top: 2.2em; font-size: clamp(1.6rem, 2.6vw, 2.25rem); line-height: 1.15; }
+.prose h3 { color: var(--ink); margin-top: 1.9em; font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.2; }
+.prose h2 + *, .prose h3 + *, .prose h4 + * { margin-top: 0.6em; }
+.prose > :first-child { margin-top: 0; }
+.prose li::marker { color: var(--accent-strong); }
+.prose blockquote { margin: 2em 0; padding: 24px 28px; background: var(--paper); border-radius: var(--radius-card); }
+.prose h4 { color: var(--ink); margin-top: 1.6em; font-size: 1.15rem; }
 .prose strong { color: var(--ink); font-weight: 600; }
+.prose a { font-weight: 500; }
 .prose a { color: var(--accent-strong); }
 .prose figure { margin: 2em 0; }
 .prose img { border-radius: var(--radius-card); }

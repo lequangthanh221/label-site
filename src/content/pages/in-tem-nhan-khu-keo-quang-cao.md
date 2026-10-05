@@ -19,18 +19,3 @@ updated: "2020-10-21"
 <p><strong>Tem nhãn pop-up</strong> gồm có 2 phần là <strong>phần vẫn còn keo</strong> và <strong>phần được khử keo</strong>. Phần có keo được dán lên sản phẩm. Phần không có keo nhô lên với nhiều hình dạng đặc biệt nhằm gây sự chú ý với người tiêu dùng.</p>
 <p><strong>Tem nhãn khử keo</strong> sản xuất bằng nhựa PP, PE. Ngoài ra, để tăng thêm tính nổi bật, khách có thể chọn in trên vật liệu decal xi bạc,… Các loại vật liệu trên giúp nhãn có độ bền cao, khó bị xé rách hoặc trầy xước khi ma sát.</p>
 <p>Bạn có thể dễ dàng nhìn thấy <strong>nhãn khử keo</strong> hay <strong>tem nhãn pop-up</strong> trên nhiều loại hóa mỹ phẩm như dầu gội, sữa tắm, thuốc nhuộm, đồ trang điểm trong siêu thị.</p>
-<h2><strong>Để được tư vấn trực tiếp<br/>
-</strong></h2>
-<h4>Quý khách hàng, đối tác vui lòng liên hệ</h4>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong></p>
-<p><strong><br/>
-Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>

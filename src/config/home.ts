@@ -15,7 +15,7 @@ export const industries = ['Thực phẩm', 'Dược phẩm', 'Mỹ phẩm', 'Lo
 
 export const about = {
   tag: 'Về chúng tôi',
-  title: 'Tìm “chiếc áo” đẹp nhất và phù hợp nhất cho sản phẩm của bạn',
+  title: 'Tìm [[“chiếc áo”]] đẹp nhất và phù hợp nhất cho sản phẩm của bạn',
   body: 'Thị trường ngày càng cạnh tranh với nhiều quy chuẩn khắt khe. Bao bì đạt chuẩn, đẹp và thu hút là một trong những khó khăn của doanh nghiệp Việt. Chúng tôi không ngừng nâng cao kỹ thuật và công nghệ in để đồng hành cùng doanh nghiệp trên con đường định hình thương hiệu.',
   image: '/uploads/2020/09/757ef3584595bacbe384.webp',
 };
@@ -30,7 +30,7 @@ export const stats = [
 
 export const values = {
   tag: 'Dịch vụ',
-  title: 'Trọn quy trình tem nhãn dưới một mái nhà',
+  title: 'Trọn quy trình tem nhãn [[dưới một mái nhà]]',
   lead: 'Tất cả những gì chúng tôi thực hiện đều nhằm mang đến dịch vụ tốt nhất cho khách hàng.',
   image: '/uploads/2020/09/Picture13-2.webp',
   items: [
@@ -43,7 +43,7 @@ export const values = {
 
 export const process = {
   tag: 'Quy trình',
-  title: 'Từ ý tưởng đến cuộn tem thành phẩm',
+  title: 'Từ ý tưởng đến [[cuộn tem]] thành phẩm',
   lead: 'Ý tưởng thiết kế và tem nhãn thực tế luôn có khác biệt. Quy trình bốn bước giúp bạn có tem nhãn phù hợp nhất ngay từ lô đầu tiên.',
   steps: [
     { id: 'y-tuong', label: 'Ý tưởng', title: 'Lên ý tưởng & thiết kế', text: 'Vẽ bản thiết kế tem nhãn theo kích thước vật chứa, màu sắc nổi bật trên nền bao bì và nội dung đầy đủ theo quy định pháp luật.', image: '/uploads/2020/09/Picture19.webp' },
@@ -55,7 +55,7 @@ export const process = {
 
 export const commitments = {
   tag: 'Cam kết',
-  title: 'Điều chúng tôi đảm bảo trên mỗi cuộn tem',
+  title: 'Điều chúng tôi [[đảm bảo]] trên mỗi cuộn tem',
   lead: 'Trân quý từng con nhãn, chiếc tem, cái hộp, cái túi — vì tem nhãn quyết định cách thương hiệu của bạn xuất hiện trên kệ hàng.',
   items: [
     { title: 'Đúng hẹn giao hàng', text: 'Luôn đúng thời gian giao hàng đã thống nhất.' },
@@ -74,7 +74,7 @@ export const faqs = [
 ];
 
 export const cta = {
-  title: 'Tem nhãn chuẩn xác. Thương hiệu nổi bật.',
+  title: 'Tem nhãn chuẩn xác.\n[[Thương hiệu nổi bật.]]',
   lead: 'Gửi yêu cầu để được tư vấn chất liệu và báo giá cho sản phẩm của bạn.',
   image: '/uploads/2020/10/Picture7-1-e1603291876807.webp',
 };

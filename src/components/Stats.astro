@@ -1,0 +1,39 @@
+---
+// Dải 4 con số — khối nhấn mạnh nhất trang, nền tối.
+import { stats } from '../config/home';
+import { emph } from '../lib/emph';
+interface Props { title?: string }
+const { title = 'Những [[con số]] nói thay chúng tôi' } = Astro.props;
+---
+<section class="stats dark">
+  <div class="container">
+    <h2 class="stats__title" data-reveal="words" set:html={emph(title)} />
+    <ul class="stats__grid">
+      {stats.map((s, i) => (
+        <li class="stat" data-reveal data-delay={String(i * 120)}>
+          <span class="stat__bar" aria-hidden="true"></span>
+          <strong class="stat__num"><span data-count={s.value}>{s.value}</span><span class="stat__suffix">{s.suffix}</span></strong>
+          <span class="stat__label">{s.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stats { position: relative; padding-block: clamp(80px, 11vw, 150px); background: radial-gradient(70% 90% at 0% 100%, var(--navy-800), var(--navy-950) 70%); overflow: hidden; }
+  .stats::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--line-dark) 1px, transparent 1px) 0 0 / calc(100% / 12) 100%; opacity: 0.35; pointer-events: none; }
+  .stats__title { position: relative; font-size: clamp(1.9rem, 3.6vw, 3rem); max-width: 18ch; margin-bottom: clamp(48px, 7vw, 88px); }
+  .stats__grid { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { display: grid; gap: 14px; align-content: start; padding: 8px clamp(16px, 2.4vw, 36px) 8px 0; }
+  .stat + .stat { padding-left: clamp(16px, 2.4vw, 36px); border-left: 1px solid var(--line-dark); }
+  .stat__bar { display: block; width: 0; height: 3px; background: var(--accent); transition: width 1.2s var(--ease-out) 0.3s; }
+  .stat.is-in .stat__bar { width: 56px; }
+  .stat__num { font-size: clamp(3.25rem, 7.4vw, 6.5rem); font-weight: 600; line-height: 0.95; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--on-dark); white-space: nowrap; }
+  .stat__suffix { color: var(--accent); }
+  .stat__label { font-size: clamp(1rem, 1.3vw, 1.15rem); font-weight: 500; color: var(--on-dark-2); max-width: 16ch; }
+  @media (max-width: 860px) {
+    .stats__grid { grid-template-columns: 1fr 1fr; row-gap: 48px; }
+    .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+  }
+</style>

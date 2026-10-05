@@ -68,7 +68,5 @@ Vì sao chọn 4B Label?
 Chúng tôi hiểu rằng, tem nhãn bao bì quan trọng thế nào đối với việc định vị thương hiệu của bạn trên thị trường.<br/>
 Hãy tin tưởng và giao cho <strong>4B Label</strong> niềm vinh dự được đồng hành cùng bạn trong việc tạo ra “chiếc áo” đẹp nhất cho sản phẩm của doanh nghiệp.</p>
 <div class="gallery"><img alt="Picture20" loading="lazy" src="/uploads/2020/09/Picture20.webp"/><img alt="Picture19" loading="lazy" src="/uploads/2020/09/Picture19-1.webp"/><img alt="In tem nhãn 4B Label" loading="lazy" src="/uploads/2020/09/Picture13-2.webp"/></div>
-<figure><img alt="4B Label logo light" loading="lazy" src="/uploads/2020/08/Logo-light.webp"/></figure>
 <p>Bạn muốn tăng giá trị cho thương hiệu?</p>
 <p>Hãy liên hệ với chúng tôi!</p>
-<p><a class="readon" href="/lien-he/">LIÊN HỆ NGAY</a></p>

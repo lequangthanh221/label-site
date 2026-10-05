@@ -29,18 +29,3 @@ Các ngành thực phẩm nên lựa chọn loại sản phẩm này: thịt, c�
 <strong>Công nghệ in ấn</strong> tem nhãn cho ngành thực phẩm khô thường được sử dụng là tem nhãn giấy cán màng bóng hoặc màng mờ, tem nhãn nhựa cán màng bóng hoặc màng mờ.<br/>
 Đối với<strong> tem nhãn giấy</strong> cán màng thì có giá thành tương đối rẻ. Nhãn nhựa với đặc tính không thấm nước cho dù để trong môi trường ẩm. Nhãn nhựa được cán màng thì lớp mực được bảo vệ chống trầy xước trong thời gian dài.</p>
 <div class="gallery"><img alt="in tem nhãn thực phẩm 4b label" loading="lazy" src="/uploads/2020/09/Picture4.webp"/><img alt="in tem nhãn thực phẩm 4b label" loading="lazy" src="/uploads/2020/09/Picture5.webp"/></div>
-<h2><strong>Để được tư vấn trực tiếp<br/>
-</strong></h2>
-<h4>Xin đừng ngần ngại, quý khách hàng hãy liên hệ với chúng tôi:</h4>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong></p>
-<p><strong><br/>
-Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>

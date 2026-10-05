@@ -22,18 +22,3 @@ updated: "2020-09-20"
 <h3>Xu hướng thiết kế tem nhãn mỹ phẩm</h3>
 <p>Xu hướng<strong> thân thiện với môi trường</strong> đang ngày càng phổ biến tại Việt Nam. Điều đó khiến không ít các doanh nghiệp kinh doanh mỹ phẩm hiện nay sản xuất theo tiêu chí <strong>“thân thiện với môi trường”</strong>. Công ty chúng tôi có các loại chất liệu có chứng chỉ FSC, đảm bảo tính thân thiện với môi trường. Chất liệu decal giấy kraft cũng là một sự lựa chọn đáng tin cậy cho khách hàng.</p>
 <figure><img alt="In tem nhãn mỹ phẩm 4B Label" loading="lazy" src="/uploads/2020/09/Picture18.webp"/></figure>
-<h2><strong>Để được tư vấn trực tiếp<br/>
-</strong></h2>
-<h4>Xin đừng ngần ngại, quý khách hàng hãy liên hệ với chúng tôi:</h4>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong></p>
-<p><strong><br/>
-Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>

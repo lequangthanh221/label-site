@@ -22,18 +22,3 @@ updated: "2020-09-19"
 <h3>Tem nhãn ngành Logistic đối với các đơn vị vận chuyển xa</h3>
 <p>Đối với các đơn vị vận chuyển hàng đi xa, các công ty xuất nhập khẩu, quý khách có thể cân nhắc sử dụng decal nhựa PP hoặc PVC kèm với mực in mã vạch Resin. Nội dung in trên tem nhãn sẽ được đảm bảo không lem, không trôi, không tróc cho dù nhãn có ở trong môi trường ẩm, hay bị ma sát mạnh.</p>
 <div class="gallery"><img alt="in tem nhãn logistic 4b label" loading="lazy" src="/uploads/2020/09/Picture11.webp"/><img alt="in tem nhãn logistic 4b label" loading="lazy" src="/uploads/2020/09/Picture12.webp"/><img alt="in tem nhãn logistic 4b label" loading="lazy" src="/uploads/2020/09/Picture10.webp"/><img alt="in tem nhãn logistic 4b label" loading="lazy" src="/uploads/2020/09/Picture13.webp"/></div>
-<h2><strong>Để được tư vấn trực tiếp<br/>
-</strong></h2>
-<h4>Xin đừng ngần ngại, quý khách hàng hãy liên hệ với chúng tôi:</h4>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong><strong>Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
-<blockquote>
-<h3><strong>Công ty TNHH Sản xuất và Thương mại 4B</strong></h3>
-<p><strong><img alt="Logo 4b label" class="wp-image-6049 alignleft" decoding="async" loading="lazy" src="/uploads/2020/08/Logo-small-1.webp"/></strong></p>
-<p><strong><br/>
-Điện thoại:</strong> 093 883 7213</p>
-<p><strong>Email:</strong> info@4blabel.com.vn</p>
-<p><strong>Facebook:</strong> 4B Labels</p></blockquote>
