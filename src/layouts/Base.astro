@@ -16,6 +16,8 @@ const { title, description = site.description, image = site.ogImage, type = 'web
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title === site.name ? title : `${title} - ${site.name}`;
 const ogImage = new URL(image, Astro.site);
+// Bản chạy thử không cho Google index (nội dung còn trùng 4B). Bật ALLOW_INDEX=true khi lên tên miền thật.
+const allowIndex = process.env.ALLOW_INDEX === 'true';
 
 const organization = {
   '@context': 'https://schema.org',
@@ -36,6 +38,7 @@ const organization = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {!allowIndex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />

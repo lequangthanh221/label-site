@@ -47,8 +47,23 @@ npm run build   # ra thư mục dist/
 
 GitHub Actions build lại sau mỗi lần push (`.github/workflows/build.yml`).
 
+## Deploy lên Cloudflare Pages (repo private)
+
+1. Vào dash.cloudflare.com → **Workers & Pages** → **Create** → tab **Pages** → **Connect to Git**.
+2. Cấp quyền GitHub cho Cloudflare, chọn repo `label-site`.
+3. Cấu hình build:
+   - Framework preset: **Astro**
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+   - Environment variables: `SITE_URL` = `https://<tên-project>.pages.dev`
+4. **Save and Deploy**. Sau đó, mỗi lần push lên `main` site sẽ tự build lại.
+
+Bản chạy thử có `noindex` và `robots.txt` chặn bot, để Google không index nội dung đang trùng 4B.
+
 ## Gắn tên miền
 
-Kết nối repo với Cloudflare Pages hoặc Vercel (build: `npm run build`, output: `dist`), đặt biến `SITE_URL=https://ten-mien.vn`, rồi trỏ DNS. `SITE_URL` dùng cho canonical, sitemap và robots.txt.
+Trong project Cloudflare Pages → **Custom domains** → thêm tên miền. Sau đó đổi biến môi trường:
+- `SITE_URL=https://ten-mien.vn` (dùng cho canonical, sitemap)
+- `ALLOW_INDEX=true` (mở cho Google index; chỉ bật sau khi đã đổi brand và viết lại nội dung SEO)
 
-**Lưu ý SEO:** nội dung trùng với 4blabel.com.vn. Trước khi index, nên viết lại các bài SEO hoặc thống nhất với 4B về việc site nào giữ bản gốc.
+**Lưu ý SEO:** nội dung trùng với 4blabel.com.vn. Trước khi bật `ALLOW_INDEX`, nên viết lại các bài SEO hoặc thống nhất với 4B về việc site nào giữ bản gốc.
