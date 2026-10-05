@@ -97,7 +97,7 @@ if (isPost) {
     </div>
   </div>
 
-  <div class="container section">
+  <div class="page-body"><div class="container">
     {isContact ? (
       <ContactBlock />
     ) : (
@@ -110,7 +110,7 @@ if (isPost) {
         <div class="grid">{listing.map((c) => <Card {...c} />)}</div>
       </section>
     )}
-  </div>
+  </div></div>
 
   {!isContact && (
     <section class="cta-band">
@@ -132,7 +132,7 @@ if (isPost) {
   .crumbs a:hover { color: var(--accent); }
   .page-title { font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: var(--track-display); line-height: 1.02; max-width: 18ch; }
   .page-meta { margin-top: 24px; color: var(--on-dark-2); max-width: 60ch; }
-  .section { background: var(--white); }
+  .page-body { background: var(--white); padding-block: var(--section); }
   .listing { margin-top: 72px; }
   .listing h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 32px; }
   .cta-band { background: var(--navy-900); color: var(--on-dark); padding-block: clamp(56px, 8vw, 96px); }
