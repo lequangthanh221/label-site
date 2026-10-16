@@ -55,8 +55,9 @@ export function related(entry: Page | Post, isPost: boolean, pages: Page[], post
     const siblings = page.parent ? after(pages.filter((p) => p.parent === page.parent).sort(byOrder), page.id) : [];
     const parent = pages.find((p) => p.id === page.parent);
     const tops = after(pages.filter((p) => p.kind === 'solution' && !p.parent).sort(byOrder), page.parent || page.id);
-    const seen = new Set<string>([page.id]);
-    const items = [...siblings, ...(parent ? [parent] : []), ...tops].filter((p) => !seen.has(p.id) && seen.add(p.id)).slice(0, LIMIT);
+    // site gốc có vài trang trùng tên (vd ...-50mm-x-30mm và ...-50mm-x-30mm-2): mỗi tên chỉ hiện một lần
+    const seen = new Set<string>([page.title]);
+    const items = [...siblings, ...(parent ? [parent] : []), ...tops].filter((p) => !seen.has(p.title) && seen.add(p.title)).slice(0, LIMIT);
     const more = parent && siblings.length ? { label: `Xem tất cả quy cách`, href: parent.path } : { label: 'Tất cả sản phẩm', href: PRODUCTS.path };
     return { title: 'Sản phẩm liên quan', items, more };
   }
