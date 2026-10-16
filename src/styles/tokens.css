@@ -4,36 +4,48 @@
    ============================================================ */
 :root {
   /* nền tối (hero, khối nhấn, footer) */
-  --navy-950: #030d1a;
-  --navy-900: #06182e;
-  --navy-850: #0a2240;
-  --navy-800: #0f2d54;
-  --navy-700: #174070;
+  /* họ xanh lấy từ logo (#1D73BE), từ đậm đến sáng */
+  --navy-950: #072748;
+  --navy-900: #0a3360;
+  --navy-850: #0f4a86;
+  --navy-800: #1660a8;
+  --navy-700: #1d73be;
 
   /* màu thương hiệu (logo) */
   --brand: #1d73be;
   --brand-hover: #2683d4;
   /* màu nhấn: bản sáng của màu logo, dùng trên nền tối */
-  --accent: #6fb1ec;
+  /* xanh băng: từ nhấn, số liệu, hiệu ứng trên nền xanh (tương phản đủ trên #1660A8) */
+  --accent: #a9d6fb;
   /* bản đậm, dùng cho chữ / link trên nền sáng */
   --accent-strong: #1d73be;
-  --accent-soft: #dcebf8;
+  --accent-soft: #e1effc;
+
+  /* nền dải màu thương hiệu: vầng sáng màu logo (trên phải) + xanh băng (dưới trái) */
+  --band-bg:
+    radial-gradient(55% 80% at 100% 0%, rgb(29 115 190 / 0.75), transparent 70%),
+    radial-gradient(60% 85% at 0% 100%, rgb(111 177 236 / 0.3), transparent 70%),
+    linear-gradient(135deg, #0a3360 0%, #0f4a86 52%, #1660a8 100%);
+  /* bản đậm hơn cho footer / 404: neo cuối trang */
+  --band-bg-deep:
+    radial-gradient(50% 90% at 100% 100%, rgb(29 115 190 / 0.45), transparent 70%),
+    linear-gradient(160deg, #072748 0%, #0a3360 100%);
 
   /* nền sáng */
-  --paper: #f3f6fb;
-  --paper-2: #e8eef7;
+  --paper: #f2f7fd;
+  --paper-2: #e4eef9;
   --white: #ffffff;
 
   /* chữ */
-  --ink: #071630;
-  --ink-2: #3c4d69;
-  --ink-3: #6b7a93;
-  --on-dark: #eef4ff;
-  --on-dark-2: rgb(238 244 255 / 0.68);
-  --on-dark-3: rgb(238 244 255 / 0.45);
+  --ink: #0a2440;
+  --ink-2: #3a5170;
+  --ink-3: #627790;
+  --on-dark: #ffffff;
+  --on-dark-2: rgb(255 255 255 / 0.84);
+  --on-dark-3: rgb(255 255 255 / 0.64);
 
-  --line: rgb(7 22 48 / 0.1);
-  --line-dark: rgb(255 255 255 / 0.1);
+  --line: rgb(10 51 96 / 0.11);
+  --line-dark: rgb(255 255 255 / 0.18);
 
   /* chữ */
   --font-body: var(--font-inter-tight), 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;

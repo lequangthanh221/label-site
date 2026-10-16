@@ -9,7 +9,8 @@
 .ab-hero__lead { color: var(--on-dark-2); }
 
 /* ghép ảnh tràn lên đầu trang */
-.mosaic-wrap { background: linear-gradient(var(--navy-950) 0 50%, var(--white) 50%); margin-top: calc(-1 * clamp(100px, 12vw, 180px)); }
+/* cụm ảnh nằm đè lên đáy đầu trang: phần chồng lấn trong suốt để thấy gradient của đầu trang */
+.mosaic-wrap { --overlap: clamp(100px, 12vw, 180px); position: relative; margin-top: calc(-1 * var(--overlap)); background: linear-gradient(transparent 0 var(--overlap), var(--white) var(--overlap)); }
 .mosaic { display: grid; grid-template-columns: 1.1fr 1.6fr 1fr; gap: 16px; align-items: end; }
 .mosaic__item { margin: 0; overflow: hidden; border-radius: var(--radius-card); }
 .mosaic__item > div { height: 100%; will-change: transform; }

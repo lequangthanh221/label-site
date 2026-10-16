@@ -36,8 +36,9 @@ a { text-underline-offset: 0.2em; }
 .dark, .hero, .page-head, .ab-hero, .ft, .nf {
   position: relative;
   isolation: isolate;
-  background: radial-gradient(70% 90% at var(--band-at), var(--navy-800), var(--navy-950) 70%);
+  background: var(--band-bg);
 }
+.ft, .nf { background: var(--band-bg-deep); }
 .dark::before, .hero::before, .page-head::before, .ab-hero::before, .ft::before, .nf::before {
   content: '';
   position: absolute;
@@ -92,7 +93,11 @@ a { text-underline-offset: 0.2em; }
 .btn--ghost { --btn-bg: transparent; --btn-fg: currentColor; border: 1px solid var(--line-dark); }
 .btn--dark { --btn-bg: var(--navy-900); --btn-fg: var(--on-dark); }
 .btn--dark .btn__arrow { background: var(--brand); color: #fff; }
-.btn--dark:hover { --btn-bg: var(--navy-700); }
+.btn--dark:hover { --btn-bg: var(--navy-850); }
+/* nút chính đặt trên dải xanh: nền trắng, chữ xanh đậm, ô mũi tên màu logo */
+:is(.dark, .hero, .page-head, .ab-hero, .ft, .nf, .cta) .btn:not(.btn--ghost) { --btn-bg: #fff; --btn-fg: var(--navy-900); }
+:is(.dark, .hero, .page-head, .ab-hero, .ft, .nf, .cta) .btn:not(.btn--ghost) .btn__arrow { background: var(--brand); color: #fff; }
+:is(.dark, .hero, .page-head, .ab-hero, .ft, .nf, .cta) .btn:not(.btn--ghost):hover { --btn-bg: var(--accent-soft); }
 
 .link-arrow { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 
