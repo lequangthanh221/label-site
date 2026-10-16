@@ -1,5 +1,5 @@
 /* chuyển từ [...slug].astro */
-.page-head { position: relative; padding: clamp(150px, 20vh, 200px) 0 clamp(56px, 8vw, 96px); background: radial-gradient(110% 90% at 85% 0%, var(--navy-850), var(--navy-950) 65%); color: var(--on-dark); overflow: hidden; }
+.page-head { position: relative; padding: clamp(150px, 20vh, 200px) 0 clamp(56px, 8vw, 96px); color: var(--on-dark); overflow: hidden; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.875rem; margin-bottom: 20px; color: var(--on-dark-3); }
 .crumbs a { color: var(--on-dark-2); text-decoration: none; }
 .crumbs a:hover { color: var(--accent); }

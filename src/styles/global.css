@@ -24,7 +24,30 @@ a { text-underline-offset: 0.2em; }
 
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: var(--section); }
-.dark { background: var(--navy-900); color: var(--on-dark); }
+.dark { color: var(--on-dark); }
+
+/* ===== Dải tối thương hiệu: gradient + hoa văn tam giác (lấy từ logo) =====
+   Dùng chung cho mọi khối nền tối. Đổi vị trí vầng sáng bằng --band-at / --band-mask-at. */
+:root {
+  --tri-pattern: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2756%27%20height%3D%2748%27%3E%3Cpath%20d%3D%27M28%206%2046%2042H10Z%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-opacity%3D%27.16%27/%3E%3C/svg%3E");
+  --band-at: 0% 100%;
+  --band-mask-at: 15% 100%;
+}
+.dark, .hero, .page-head, .ab-hero, .ft, .nf {
+  position: relative;
+  isolation: isolate;
+  background: radial-gradient(70% 90% at var(--band-at), var(--navy-800), var(--navy-950) 70%);
+}
+.dark::before, .hero::before, .page-head::before, .ab-hero::before, .ft::before, .nf::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--tri-pattern) 0 0 / 56px 48px;
+  -webkit-mask-image: radial-gradient(70% 90% at var(--band-mask-at), #000, transparent 75%);
+  mask-image: radial-gradient(70% 90% at var(--band-mask-at), #000, transparent 75%);
+  pointer-events: none;
+}
 .muted { color: var(--ink-3); }
 .dark .muted { color: var(--on-dark-2); }
 

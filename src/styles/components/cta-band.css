@@ -1,5 +1,5 @@
 /* chuyển từ CtaBand.astro */
-.cta-band { padding-block: clamp(64px, 9vw, 112px); background: radial-gradient(60% 120% at 100% 0%, var(--navy-800), var(--navy-900) 70%); }
+.cta-band { padding-block: clamp(64px, 9vw, 112px); }
 .cta-band__inner { display: flex; flex-wrap: wrap; gap: 32px; align-items: end; justify-content: space-between; }
 .cta-band h2 { font-size: clamp(2rem, 3.8vw, 3.25rem); max-width: 18ch; }
 .cta-band p { margin-top: 16px; color: var(--on-dark-2); font-size: 1.1rem; }

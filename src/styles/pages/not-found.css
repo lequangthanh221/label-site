@@ -1,5 +1,5 @@
 /* chuyển từ 404.astro */
-.nf { min-height: 80vh; display: grid; align-items: center; padding: 160px 0 96px; background: var(--navy-950); color: var(--on-dark); }
+.nf { min-height: 80vh; display: grid; align-items: center; padding: 160px 0 96px; color: var(--on-dark); }
 .nf__code { font-size: clamp(5rem, 16vw, 12rem); letter-spacing: -0.06em; line-height: 1; color: var(--accent); }
 .nf h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 12px 0; }
 .nf__text { color: var(--on-dark-2); margin-bottom: 32px; }
