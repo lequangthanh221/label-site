@@ -1,19 +1,23 @@
 /* ============================================================
-   BRAND TOKENS - bản thử theo tinh thần Consilio, tông xanh dương đậm.
-   Khi có brand guidelines thật: chỉ thay các biến dưới đây.
+   BRAND TOKENS - Temnhanmavach / Hoàng Lộc.
+   Màu chủ đạo lấy từ logo: #1D73BE. Dải navy chỉnh cùng sắc độ với logo.
    ============================================================ */
 :root {
   /* nền tối (hero, khối nhấn, footer) */
-  --navy-950: #040b18;
-  --navy-900: #071630;
-  --navy-850: #0b1f40;
-  --navy-800: #102a52;
-  --navy-700: #183a6e;
+  --navy-950: #030d1a;
+  --navy-900: #06182e;
+  --navy-850: #0a2240;
+  --navy-800: #0f2d54;
+  --navy-700: #174070;
 
-  /* màu nhấn: xanh sáng trên nền tối, đủ tương phản cho chữ navy đặt lên */
-  --accent: #5ea8ff;
-  --accent-strong: #2f86f6;
-  --accent-soft: #d6e7ff;
+  /* màu thương hiệu (logo) */
+  --brand: #1d73be;
+  --brand-hover: #2683d4;
+  /* màu nhấn: bản sáng của màu logo, dùng trên nền tối */
+  --accent: #6fb1ec;
+  /* bản đậm, dùng cho chữ / link trên nền sáng */
+  --accent-strong: #1d73be;
+  --accent-soft: #dcebf8;
 
   /* nền sáng */
   --paper: #f3f6fb;
@@ -44,8 +48,11 @@
   --track-heading: -0.032em;
 
   /* nhịp và bo góc */
-  --radius: 2px;
-  --radius-card: 4px;
+  /* bo góc mềm */
+  --radius: 10px;        /* nút, ô nhập */
+  --radius-sm: 12px;     /* thẻ nhỏ, ô icon */
+  --radius-card: 20px;   /* thẻ, ảnh */
+  --radius-xl: 28px;     /* khối lớn: CTA, accordion */
   --container: 1280px;
   --gutter: clamp(16px, 4vw, 40px);
   --section: clamp(72px, 10vw, 140px);

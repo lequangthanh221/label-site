@@ -29,11 +29,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: site.name,
   description: site.description,
-  icons: { icon: '/brand/favicon.svg' },
+  icons: { icon: [{ url: '/brand/favicon.svg', type: 'image/svg+xml' }, { url: '/brand/icon-512.png', sizes: '512x512' }], apple: '/brand/apple-touch-icon.png' },
   robots: ALLOW_INDEX ? { index: true, follow: true } : { index: false, follow: false },
 };
 
-export const viewport: Viewport = { themeColor: '#040b18' };
+export const viewport: Viewport = { themeColor: '#030d1a' };
 
 const organization = {
   '@context': 'https://schema.org',

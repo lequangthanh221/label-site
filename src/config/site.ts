@@ -10,7 +10,7 @@ export const site = {
   tagline: 'In tem nhãn, decal mã vạch và bao bì theo yêu cầu',
   description:
     'Hỗ trợ từ lên ý tưởng, thiết kế tem nhãn bao bì, chọn vật liệu phù hợp đến in ấn, cắt bế thành phẩm đẹp và chuẩn xác.',
-  logo: '/brand/logo.svg',
+  logo: '/brand/logo-blue.png',
   ogImage: '/brand/og.png',
   locale: 'vi_VN',
   contact: {

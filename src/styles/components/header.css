@@ -17,7 +17,7 @@
 .has-sub { position: relative; }
 .hd__sub { position: absolute; top: 100%; left: 0; padding-top: 10px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: 0.35s var(--ease-out); }
 .has-sub:hover .hd__sub, .has-sub:focus-within .hd__sub { opacity: 1; visibility: visible; transform: none; }
-.hd__sub ul { list-style: none; margin: 0; padding: 10px; min-width: 280px; background: var(--navy-900); border: 1px solid var(--line-dark); border-radius: var(--radius-card); box-shadow: 0 24px 48px rgb(0 0 0 / 0.35); }
+.hd__sub ul { list-style: none; margin: 0; padding: 10px; min-width: 280px; background: var(--navy-900); border: 1px solid var(--line-dark); border-radius: var(--radius-sm); box-shadow: 0 24px 48px rgb(0 0 0 / 0.35); }
 .hd__sub a { display: block; padding: 8px 12px; text-decoration: none; font-size: 0.9rem; color: var(--on-dark-2); border-radius: var(--radius); transition: background 0.2s, color 0.2s; }
 .hd__sub a:hover { background: var(--navy-800); color: var(--on-dark); }
 

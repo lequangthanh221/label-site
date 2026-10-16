@@ -75,5 +75,5 @@ export const faqs = [
 export const cta = {
   title: 'Tem nhãn chuẩn xác.\n[[Thương hiệu nổi bật.]]',
   lead: 'Gửi yêu cầu để được tư vấn chất liệu và báo giá cho sản phẩm của bạn.',
-  image: '/uploads/2020/10/Picture7-1-e1603291876807.webp',
+  image: '/uploads/2020/09/e0b8da6768aa97f4cebb.webp',
 };

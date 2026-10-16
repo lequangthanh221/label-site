@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BrandMark from '@/components/BrandMark';
 import Button from '@/components/Button';
 import CarouselArrows from '@/components/CarouselArrows';
 import FaqAccordion from '@/components/FaqAccordion';
@@ -51,6 +52,9 @@ export default function HomePage() {
       {/* ============ HERO ============ */}
       <section className="hero">
         <HeroWaves />
+        <div className="hero__mark" aria-hidden="true">
+          <div data-parallax="-0.12"><BrandMark size={640} /></div>
+        </div>
         <div className="container hero__inner">
           <h1 className="h-display hero__title" data-reveal="words"><Words text={hero.title} /></h1>
           <div className="hero__bottom">
@@ -249,6 +253,7 @@ export default function HomePage() {
         <div className="container">
           <div className="cta">
             <img src={cta.image} alt="" loading="lazy" className="cta__bg" />
+            <BrandMark className="cta__mark" size={420} />
             <div className="cta__inner">
               <h2 className="h-section" data-reveal="words"><Words text={cta.title} /></h2>
               <p className="lead" data-reveal data-delay="200">{cta.lead}</p>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { nav, site } from '@/config/site';
+import BrandMark from './BrandMark';
 import Logo from './Logo';
 
 export default function Footer() {
@@ -7,9 +8,11 @@ export default function Footer() {
   const services = nav.find((n) => n.href === '/dich-vu/')?.children ?? [];
   return (
     <footer className="ft">
+      {/* logo chìm cỡ lớn */}
+      <BrandMark className="ft__watermark" size={560} />
       <div className="container ft__grid">
         <div className="ft__brand">
-          <Logo />
+          <Logo withCompany />
           <p>{site.description}</p>
           <ul className="ft__contact">
             <li><a href={site.contact.phoneHref}>{site.contact.phone}</a></li>
