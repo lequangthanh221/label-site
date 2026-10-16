@@ -1,5 +1,5 @@
 'use client';
-// Sóng đường mảnh ở nền hero (canvas). Chỉ chạy khi hero đang hiển thị.
+// Sóng đường mảnh ở nền hero (canvas). Chỉ chạy khi hero đang hiển thị; chậm hơn nếu người xem bật giảm chuyển động.
 import { useEffect, useRef } from 'react';
 
 export default function HeroWaves() {
@@ -39,7 +39,7 @@ export default function HeroWaves() {
     };
     const loop = () => {
       if (!visible) return;
-      t += 0.008;
+      t += reduce ? 0.003 : 0.008;
       draw();
       raf = requestAnimationFrame(loop);
     };
@@ -47,14 +47,13 @@ export default function HeroWaves() {
 
     resize();
     window.addEventListener('resize', onResize);
-    if (reduce) draw();
     const io = new IntersectionObserver(([e]) => {
       const was = visible;
       visible = e.isIntersecting;
-      if (visible && !was && !reduce) loop();
+      if (visible && !was) loop();
     });
     io.observe(canvas);
-    if (!reduce) loop();
+    loop();
 
     return () => { cancelAnimationFrame(raf); io.disconnect(); window.removeEventListener('resize', onResize); };
   }, []);

@@ -3,6 +3,7 @@ import { Inter_Tight } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Motion from '@/components/Motion';
+import ScrollTop from '@/components/ScrollTop';
 import { site } from '@/config/site';
 import { ALLOW_INDEX, JsonLd, SITE_URL } from '@/lib/seo';
 import '@/styles/global.css';
@@ -13,6 +14,7 @@ import '@/styles/components/card.css';
 import '@/styles/components/contact.css';
 import '@/styles/components/stats.css';
 import '@/styles/components/cta-band.css';
+import '@/styles/components/scroll-top.css';
 import '@/styles/pages/home.css';
 import '@/styles/pages/detail.css';
 import '@/styles/pages/about.css';
@@ -57,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
+        <ScrollTop />
         <Motion />
       </body>
     </html>

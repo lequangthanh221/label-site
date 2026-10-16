@@ -44,7 +44,7 @@ a { text-underline-offset: 0.2em; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--tri-pattern) 0 0 / 56px 48px;
+  background: var(--tri-pattern) 0 calc(var(--py, 0) * 1px) / 56px 48px;
   -webkit-mask-image: radial-gradient(70% 90% at var(--band-mask-at), #000, transparent 75%);
   mask-image: radial-gradient(70% 90% at var(--band-mask-at), #000, transparent 75%);
   pointer-events: none;
@@ -108,11 +108,19 @@ a { text-underline-offset: 0.2em; }
 [data-reveal='words'] .w { display: inline-block; opacity: 0; filter: blur(12px); transform: translateY(0.35em); transition: opacity 1s var(--ease-out), filter 1s var(--ease-out), transform 1s var(--ease-out); transition-delay: calc(var(--i) * 55ms + var(--d, 0) * 1ms); }
 [data-reveal='words'].is-in .w { opacity: 1; filter: blur(0); transform: none; }
 
+/* Người xem bật "giảm chuyển động": làm dịu chứ không tắt hẳn.
+   Hiện dần chỉ còn mờ dần (bỏ nhoè + trượt), dải chữ chạy chậm hơn. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  [data-reveal], [data-reveal] .w { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
-  .marquee__track { animation: none !important; }
+  [data-reveal], [data-reveal] .w { filter: none !important; transform: none !important; }
+  .marquee__track { animation-duration: 110s !important; }
 }
+
+/* ===== parallax ảnh trong khung (Motion.tsx gắn class .pimg) ===== */
+.pimg { overflow: hidden; }
+.pimg img { transform: scale(1.14); will-change: transform; }
+.prose figure.pimg { border-radius: var(--radius-card); }
+.prose .pimg img { transform: scale(1.06); }
 
 /* ===== nội dung trang con (HTML lấy từ site gốc) ===== */
 .prose { max-width: 72ch; font-size: 1.0625rem; line-height: 1.7; color: var(--ink-2); }

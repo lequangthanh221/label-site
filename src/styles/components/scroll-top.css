@@ -1,0 +1,25 @@
+/* nút lên đầu trang: hiện khi đã cuộn, vòng ngoài là tiến độ đọc */
+.to-top {
+  position: fixed;
+  right: calc(20px + env(safe-area-inset-right, 0px));
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  width: 56px; height: 56px;
+  display: grid; place-items: center;
+  border: 0; border-radius: 50%;
+  background: var(--brand); color: #fff;
+  cursor: pointer;
+  box-shadow: 0 12px 28px -10px rgb(10 51 96 / 0.55);
+  opacity: 0; visibility: hidden;
+  transform: translateY(16px) scale(0.9);
+  transition: opacity 0.4s var(--ease-out), transform 0.5s var(--ease-out), visibility 0s 0.4s, background 0.3s;
+}
+.to-top.is-on { opacity: 1; visibility: visible; transform: none; transition: opacity 0.4s var(--ease-out), transform 0.5s var(--ease-out), background 0.3s; }
+.to-top:hover { background: var(--brand-hover); }
+.to-top:hover .to-top__arrow { transform: translateY(-3px); }
+.to-top__ring { position: absolute; inset: -4px; width: calc(100% + 8px); height: calc(100% + 8px); transform: rotate(-90deg); pointer-events: none; }
+.to-top__ring circle { fill: none; stroke-width: 2.5; }
+.to-top__track { stroke: rgb(29 115 190 / 0.18); }
+.to-top__bar { stroke: var(--brand); stroke-linecap: round; transition: stroke-dashoffset 0.15s linear; }
+.to-top__arrow { width: 22px; height: 22px; transition: transform 0.4s var(--ease-out); }
+@media (max-width: 640px) { .to-top { width: 48px; height: 48px; right: calc(14px + env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); } }

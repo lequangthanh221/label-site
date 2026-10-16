@@ -55,7 +55,7 @@ export default function HomePage() {
         <div className="hero__mark" aria-hidden="true">
           <div data-parallax="-0.12"><BrandMark size={640} /></div>
         </div>
-        <div className="container hero__inner">
+        <div className="container hero__inner" data-parallax-hero>
           <h1 className="h-display hero__title" data-reveal="words"><Words text={hero.title} /></h1>
           <div className="hero__bottom">
             <div className="hero__left">
@@ -90,7 +90,7 @@ export default function HomePage() {
               <div data-reveal data-delay="300"><Button href="/gioi-thieu/" variant="dark">Câu chuyện của chúng tôi</Button></div>
             </div>
           </div>
-          <div className="about__img" data-reveal><img src={about.image} alt="Các cuộn tem nhãn thành phẩm" loading="lazy" /></div>
+          <div className="about__img js-pimg" data-reveal><img src={about.image} alt="Các cuộn tem nhãn thành phẩm" loading="lazy" /></div>
         </div>
       </section>
 
@@ -140,7 +140,7 @@ export default function HomePage() {
                 <p>{v.text}</p>
               </Link>
             ))}
-            <div className="values__img" data-reveal><img src={values.image} alt="Máy in tem nhãn cuộn" loading="lazy" /></div>
+            <div className="values__img js-pimg" data-reveal><img src={values.image} alt="Máy in tem nhãn cuộn" loading="lazy" /></div>
           </div>
         </div>
       </section>
@@ -251,7 +251,7 @@ export default function HomePage() {
       {/* ============ CTA ============ */}
       <section className="cta-wrap">
         <div className="container">
-          <div className="cta">
+          <div className="cta js-pimg">
             <img src={cta.image} alt="" loading="lazy" className="cta__bg" />
             <BrandMark className="cta__mark" size={420} />
             <div className="cta__inner">

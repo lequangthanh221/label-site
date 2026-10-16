@@ -57,7 +57,7 @@ export default function AboutPage() {
             ))}
             <div className="story__imgs">
               {a.story.images.map((m, i) => (
-                <figure key={m.src} data-reveal data-delay={String(i * 140)}><img src={m.src} alt={m.alt} loading="lazy" /></figure>
+                <figure key={m.src} className="js-pimg" data-reveal data-delay={String(i * 140)}><img src={m.src} alt={m.alt} loading="lazy" /></figure>
               ))}
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function AboutPage() {
       {/* ===== ra đời + trích dẫn ===== */}
       <section className="section origin">
         <div className="container origin__grid">
-          <figure className="origin__img" data-reveal><img src={a.origin.image.src} alt={a.origin.image.alt} loading="lazy" /></figure>
+          <figure className="origin__img js-pimg" data-reveal><img src={a.origin.image.src} alt={a.origin.image.alt} loading="lazy" /></figure>
           <div className="origin__text">
             <h2 className="h-section" data-reveal="words"><Words text={a.origin.title} /></h2>
             {a.origin.paragraphs.map((p, i) => <p key={i} className="lead muted" data-reveal data-delay="150">{p}</p>)}
@@ -115,7 +115,7 @@ export default function AboutPage() {
           <div className="ab-values__head">
             <span className="tag" data-reveal>{a.values.tag}</span>
             <h2 className="h-section" data-reveal="words"><Words text={a.values.title} /></h2>
-            <figure className="ab-values__img" data-reveal><img src={a.values.image.src} alt={a.values.image.alt} loading="lazy" /></figure>
+            <figure className="ab-values__img js-pimg" data-reveal><img src={a.values.image.src} alt={a.values.image.alt} loading="lazy" /></figure>
           </div>
           <ul className="ab-values__list">
             {a.values.items.map((v, i) => (
