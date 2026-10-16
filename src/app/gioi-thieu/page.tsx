@@ -24,7 +24,7 @@ export default function AboutPage() {
       <section className="ab-hero">
         <div className="container">
           <nav className="crumbs" aria-label="Breadcrumb" data-reveal>
-            <Link href="/">Trang chủ</Link><span aria-hidden="true">/</span><span>Giới thiệu</span>
+            <ol><li><Link href="/">Trang chủ</Link></li><li aria-current="page">Giới thiệu</li></ol>
           </nav>
           <div className="ab-hero__grid">
             <h1 className="h-display ab-hero__title" data-reveal="words"><Words text={a.title} /></h1>

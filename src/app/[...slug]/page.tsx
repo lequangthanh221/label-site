@@ -4,9 +4,11 @@ import { notFound } from 'next/navigation';
 import Card, { type CardData } from '@/components/Card';
 import ContactBlock from '@/components/ContactBlock';
 import CtaBand from '@/components/CtaBand';
+import RelatedPanel from '@/components/RelatedPanel';
 import { site } from '@/config/site';
 import { byOrder, fmtDate, getPages, getPosts, toSlug, type Page, type Post } from '@/lib/content';
 import { Words } from '@/lib/emph';
+import { breadcrumb, related } from '@/lib/nav';
 import { breadcrumbLd, JsonLd, pageMeta, SITE_URL } from '@/lib/seo';
 
 // Trang có route riêng (src/app/<tên>/page.tsx) không đi qua đây
@@ -49,7 +51,6 @@ export default async function EntryPage({ params }: Props) {
   const posts = getPosts();
   const page = entry.type === 'page' ? entry.data : null;
   const post = entry.type === 'post' ? entry.data : null;
-  const parent = page?.parent ? pages.find((p) => p.id === page.parent) : undefined;
   const toCard = (p: Page | Post): CardData => ({ href: p.path, title: p.title, image: p.cover || undefined, text: p.description });
 
   // danh sách hiển thị dưới nội dung
@@ -72,10 +73,9 @@ export default async function EntryPage({ params }: Props) {
   // đoạn giới thiệu dưới tiêu đề chỉ dùng cho trang không có nội dung riêng (tránh lặp câu mở đầu)
   const intro = page && page.kind !== 'info' && !showBody ? page.description : '';
 
-  const crumbs = [{ name: 'Trang chủ', path: '/' }];
-  if (post) crumbs.push({ name: 'Tin tức & Sự kiện', path: '/tin-tuc-su-kien/' });
-  if (parent) crumbs.push({ name: parent.title, path: parent.path });
-  crumbs.push({ name: entry.data.title, path: entry.data.path });
+  const crumbs = breadcrumb(entry.data, !!post, pages);
+  // cột phải chỉ cho trang có nội dung riêng (sản phẩm, dịch vụ, bài viết)
+  const side = showBody ? related(entry.data, !!post, pages, posts) : null;
 
   return (
     <>
@@ -95,9 +95,15 @@ export default async function EntryPage({ params }: Props) {
       <div className="page-head">
         <div className="container">
           <nav className="crumbs" aria-label="Breadcrumb" data-reveal>
-            {crumbs.slice(0, -1).map((c) => (
-              <span key={c.path}><Link href={c.path}>{c.name}</Link><span aria-hidden="true"> / </span></span>
-            ))}
+            <ol>
+              {crumbs.map((c, i) =>
+                i < crumbs.length - 1 ? (
+                  <li key={c.path}><Link href={c.path}>{c.name}</Link></li>
+                ) : (
+                  <li key={c.path} aria-current="page">{c.name}</li>
+                ),
+              )}
+            </ol>
           </nav>
           <h1 className="page-title" data-reveal="words"><Words text={entry.data.title} /></h1>
           {post && <p className="page-meta" data-reveal data-delay="300">{fmtDate(post.date)}</p>}
@@ -108,13 +114,18 @@ export default async function EntryPage({ params }: Props) {
       <div className="page-body">
         <div className="container">
           {isContact && <ContactBlock />}
-          {showBody && <article className="prose" dangerouslySetInnerHTML={{ __html: entry.data.html }} />}
-          {listing.length > 0 && (
-            <section className={showBody ? 'listing' : 'listing listing--solo'}>
-              {listingTitle && <h2>{listingTitle}</h2>}
-              <div className="grid">{listing.map((c) => <Card key={c.href} {...c} />)}</div>
-            </section>
-          )}
+          <div className={side ? 'detail' : undefined}>
+            <div className="detail__main">
+              {showBody && <article className="prose" dangerouslySetInnerHTML={{ __html: entry.data.html }} />}
+              {listing.length > 0 && (
+                <section className={showBody ? 'listing' : 'listing listing--solo'}>
+                  {listingTitle && <h2>{listingTitle}</h2>}
+                  <div className="grid">{listing.map((c) => <Card key={c.href} {...c} />)}</div>
+                </section>
+              )}
+            </div>
+            {side && <RelatedPanel data={side} />}
+          </div>
         </div>
       </div>
 
